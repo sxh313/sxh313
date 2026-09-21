@@ -90,9 +90,8 @@ def main() -> int:
 
     lines = [f"Pin these {len(target)}, in this order:"]
     for pos, name in enumerate(target, 1):
-        note = "merged" if name in merges else "personal"
-        extra = f"  ({merges[name]} merged)" if name in merges else ""
-        lines.append(f"  {pos}. {name:<34} {note}{extra}")
+        tag = f"merged x{merges[name]}" if name in merges else "personal"
+        lines.append(f"  {pos}. {name:<34} {tag}")
     if to_add:
         lines.append("Add:    " + ", ".join(to_add))
     if to_drop:
