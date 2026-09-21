@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Rewrite the merged-PR block of the profile README.
 
-Only projects that accepted a merge are listed, and only as a name plus a count:
-the query selects no title, number or URL, so no individual pull request is exposed.
+One row per project that merged a pull request. The query selects no title, number or URL,
+so an individual pull request is never named or linked.
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ START = "<!-- merged-prs:start -->"
 END = "<!-- merged-prs:end -->"
 MAX_MONTHS = 12
 MAX_PAGES = 5
-BAR = 14
+BAR = 12
 
 PAGE = """
 query($search: String!, $cursor: String) {
@@ -83,56 +83,81 @@ def compact(number: int) -> str:
     return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
 
 
-def months(per_month: Counter, now: str) -> list[str]:
+def cadence(per_month: Counter, now: str) -> list[str]:
     if not per_month:
         return []
     year, month = (int(part) for part in min(per_month).split("-"))
-    out = []
+    span = []
     while f"{year:04d}-{month:02d}" <= now:
-        out.append(f"{year:04d}-{month:02d}")
+        span.append(f"{year:04d}-{month:02d}")
         year, month = (year + 1, 1) if month == 12 else (year, month + 1)
-    return out[-MAX_MONTHS:]
+    peak = max(per_month.values())
+    out = []
+    for label in span[-MAX_MONTHS:]:
+        count = per_month.get(label, 0)
+        width = max(1, round(count / peak * BAR)) if count else 0
+        out.append(f"{label}  {'█' * width}{'░' * (BAR - width)}  {count}")
+    return out
 
 
 def render(rows: list[dict], merged_total: int) -> str:
     if not rows:
         return "_Nothing merged upstream yet._"
 
-    repos = {row["repo"]["nameWithOwner"]: row["repo"] for row in rows}
-    counts = Counter(row["repo"]["nameWithOwner"] for row in rows)
-    langs = Counter(
-        (repo.get("primaryLanguage") or {}).get("name") or "Other" for repo in repos.values()
-    )
+    projects: dict[str, dict] = {}
+    for row in rows:
+        repo = row["repo"]
+        name = repo["nameWithOwner"]
+        entry = projects.setdefault(
+            name,
+            {
+                "stars": repo["stargazerCount"],
+                "lang": (repo.get("primaryLanguage") or {}).get("name") or "-",
+                "merged": 0,
+                "latest": row["stamp"],
+            },
+        )
+        entry["merged"] += 1
+        entry["latest"] = max(entry["latest"], row["stamp"])
+
+    langs = Counter(entry["lang"] for entry in projects.values())
     per_month = Counter(row["stamp"][:7] for row in rows)
     now = datetime.now(timezone.utc).strftime("%Y-%m")
-    ordered = sorted(counts, key=lambda name: (-counts[name], -repos[name]["stargazerCount"], name))
+    order = sorted(projects, key=lambda n: (-projects[n]["stars"], n))
 
     out = [
-        "| Merged upstream | Projects | Combined stars | Since |",
-        "| :---: | :---: | :---: | :---: |",
-        f"| **{merged_total}** | **{len(repos)}** "
-        f"| **{compact(sum(r['stargazerCount'] for r in repos.values()))} ★** "
-        f"| **{min(per_month)}** |",
-        "| accepted by maintainers | that merged my work | of those projects | first merge |",
+        "| Project | ★ | Language | Merged | Latest |",
+        "| :-- | --: | :-- | --: | :-- |",
+    ]
+    for name in order:
+        entry = projects[name]
+        out.append(
+            f"| [`{name}`](https://github.com/{name}) | {compact(entry['stars'])} "
+            f"| {entry['lang']} | {entry['merged']} | {entry['latest'][:10]} |"
+        )
+    total_stars = sum(entry["stars"] for entry in projects.values())
+    out.append(
+        f"| **{len(projects)} projects** | **{compact(total_stars)}** | — "
+        f"| **{merged_total}** | since {min(per_month)} |"
+    )
+    if len(rows) < merged_total:
+        out.append("")
+        out.append(f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>")
+    out += [
         "",
-        "**Merged into**  "
-        + "  ·  ".join(
-            f"`{name}` {compact(repos[name]['stargazerCount'])}★ ×{counts[name]}" for name in ordered
-        ),
-        "",
-        "**Cadence**  merged per month",
+        "<details><summary>Cadence &amp; stack</summary>",
         "",
         "```text",
+        *cadence(per_month, now),
+        "```",
+        "",
+        "**Primary languages**  " + "  ·  ".join(
+            f"{name} `{'█' * max(1, round(count / max(langs.values())) * BAR)}` {count}"
+            for name, count in langs.most_common(5)
+        ),
+        "",
+        "</details>",
     ]
-    peak = max(per_month.values())
-    for label in months(per_month, now):
-        count = per_month.get(label, 0)
-        width = max(1, round(count / peak * BAR)) if count else 0
-        out.append(f"{label}  {'█' * width}{'░' * (BAR - width)}  {count}")
-    out += ["```", "", "**Stack**  " + "  ·  ".join(
-        f"{name} `{'█' * max(1, round(count / max(langs.values())) * BAR)}` {count}/{len(repos)}"
-        for name, count in langs.most_common(5)
-    )]
     return "\n".join(out)
 
 
@@ -170,10 +195,9 @@ def main() -> int:
         return 0
 
     block = (
-        f"{body}\n\n<sub>Refreshed "
-        f"{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} by "
-        "[.github/workflows/refresh.yml](.github/workflows/refresh.yml). "
-        "Projects with a merged pull request only; individual pull requests are not listed.</sub>"
+        f"{body}\n\n<sub>Merges only, per project - no individual pull request is listed. "
+        f"Refreshed {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} by "
+        "[.github/workflows/refresh.yml](.github/workflows/refresh.yml).</sub>"
     )
     start, stop = match.span()
     readme.write_text(

@@ -11,21 +11,24 @@ Projects that have merged my pull requests upstream, refreshed automatically.
 Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
-| Merged upstream | Projects | Combined stars | Since |
-| :---: | :---: | :---: | :---: |
-| **5** | **4** | **58.7k ★** | **2026-08** |
-| accepted by maintainers | that merged my work | of those projects | first merge |
+| Project | ★ | Language | Merged | Latest |
+| :-- | --: | :-- | --: | :-- |
+| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.1k | Python | 1 | 2026-09-21 |
+| [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | Python | 1 | 2026-09-21 |
+| [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.2k | Python | 2 | 2026-09-20 |
+| [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | Python | 1 | 2026-08-13 |
+| **4 projects** | **58.7k** | — | **5** | since 2026-08 |
 
-**Merged into**  `mrexodia/ida-pro-mcp` 12.2k★ ×2  ·  `agentscope-ai/agentscope` 32.1k★ ×1  ·  `livekit/agents` 14.3k★ ×1  ·  `limouren2000/YYGlobal` 112★ ×1
-
-**Cadence**  merged per month
+<details><summary>Cadence &amp; stack</summary>
 
 ```text
-2026-08  ████░░░░░░░░░░  1
-2026-09  ██████████████  4
+2026-08  ███░░░░░░░░░  1
+2026-09  ████████████  4
 ```
 
-**Stack**  Python `██████████████` 4/4
+**Primary languages**  Python `████████████` 4
 
-<sub>Refreshed 2026-09-21 09:08 UTC by [.github/workflows/refresh.yml](.github/workflows/refresh.yml). Projects with a merged pull request only; individual pull requests are not listed.</sub>
+</details>
+
+<sub>Merges only, per project - no individual pull request is listed. Refreshed 2026-09-21 09:20 UTC by [.github/workflows/refresh.yml](.github/workflows/refresh.yml).</sub>
 <!-- merged-prs:end -->
