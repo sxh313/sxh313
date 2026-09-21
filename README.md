@@ -14,7 +14,7 @@ Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-7-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="7 merged prs" />
   <img src="https://img.shields.io/badge/Projects-6-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="6 projects" />
-  <img src="https://img.shields.io/badge/GitHub%20stars-79.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="79.8k github stars" />
+  <img src="https://img.shields.io/badge/GitHub%20stars-79.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="79.9k github stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -35,5 +35,5 @@ Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 20:24 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 23:33 UTC.</sub>
 <!-- merged-prs:end -->
