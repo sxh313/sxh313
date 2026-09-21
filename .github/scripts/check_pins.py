@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+"""Compare the profile's pinned items with the projects that merged a pull request.
+
+GitHub has no API for pins (six items, repositories and gists combined, edited only in the
+browser), so this prints the order to apply rather than applying it.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import urllib.request
+from collections import Counter
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from render_merged_prs import collect  # noqa: E402
+
+API = "https://api.github.com/graphql"
+SLOTS = 6
+
+PINS = """
+query($login: String!) {
+  user(login: $login) {
+    pinnedItems(first: 6) {
+      nodes { __typename ... on Repository { nameWithOwner } }
+    }
+  }
+}
+"""
+
+
+def gql(token: str, query: str, variables: dict) -> dict:
+    body = json.dumps({"query": query, "variables": variables}).encode()
+    request = urllib.request.Request(
+        API,
+        data=body,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "profile-readme-refresh",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        payload = json.load(response)
+    if payload.get("errors"):
+        raise SystemExit(f"GraphQL errors: {json.dumps(payload['errors'])}")
+    return payload["data"]
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--owner", default=os.environ.get("PROFILE_OWNER", "sxh313"))
+    parser.add_argument("--output", type=Path, help="Write the plan here.")
+    args = parser.parse_args()
+
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if not token:
+        raise SystemExit("Set GH_TOKEN / GITHUB_TOKEN.")
+
+    rows, _ = collect(token, f"author:{args.owner} is:pr is:merged")
+    stars: dict[str, int] = {}
+    merges: Counter = Counter()
+    for row in rows:
+        name = row["repo"]["nameWithOwner"]
+        stars.setdefault(name, row["repo"]["stargazerCount"])
+        merges[name] += 1
+    merged_order = sorted(stars, key=lambda n: (-stars[n], n))
+
+    nodes = gql(token, PINS, {"login": args.owner})["user"]["pinnedItems"]["nodes"]
+    current = [n["nameWithOwner"] for n in nodes if n and n["__typename"] == "Repository"]
+    gists = sum(1 for n in nodes if n and n["__typename"] != "Repository")
+
+    target = merged_order[:SLOTS]
+    if len(target) < SLOTS:
+        # Personal picks keep their place; a gist costs a slot, so count it.
+        room = SLOTS - gists
+        for name in current:
+            if len(target) >= room:
+                break
+            if name not in target:
+                target.append(name)
+        target = target[:room]
+
+    to_add = [n for n in target if n not in current]
+    to_drop = [n for n in current if n not in target]
+
+    lines = [f"Pin these {len(target)}, in this order:"]
+    for pos, name in enumerate(target, 1):
+        note = "merged" if name in merges else "personal"
+        extra = f"  ({merges[name]} merged)" if name in merges else ""
+        lines.append(f"  {pos}. {name:<34} {note}{extra}")
+    if to_add:
+        lines.append("Add:    " + ", ".join(to_add))
+    if to_drop:
+        lines.append("Remove: " + ", ".join(to_drop))
+    if gists:
+        lines.append(f"{gists} gist(s) pinned, so {SLOTS - gists} repository slots remain.")
+    if not to_add and not to_drop:
+        lines.insert(1, "Already in sync.")
+
+    plan = "\n".join(lines)
+    print(plan)
+    if to_add or to_drop:
+        # A log line GitHub renders as an annotation on the run page.
+        print(f"::warning::profile pins drift: add [{', '.join(to_add)}] remove [{', '.join(to_drop)}]")
+    if args.output:
+        args.output.write_text(plan + "\n", encoding="utf-8", newline="\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

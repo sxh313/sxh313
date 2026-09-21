@@ -22,6 +22,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 .github/scripts/render_merged_prs.py
 
+      - name: Compare the profile pins with the merged list
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/check_pins.py --output pin-plan.txt
+
       - name: Commit if the data changed
         run: |
           set -euo pipefail
@@ -34,3 +40,12 @@ jobs:
           git add README.md
           git commit -m "docs: refresh merged PR list [skip ci]"
           git push
+
+      # Pins have no API, so the run only leaves the order to apply by hand.
+      - name: Upload the pin plan
+        if: hashFiles('pin-plan.txt') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: pin-plan
+          path: pin-plan.txt
+          retention-days: 14
