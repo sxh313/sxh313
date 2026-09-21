@@ -234,8 +234,9 @@ def main() -> int:
 
     block = (
         f"{body}\n\n<sub>Merges only, per project - no individual pull request is listed. "
-        f"Refreshed {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} by "
-        "[.github/workflows/refresh.yml](.github/workflows/refresh.yml).</sub>"
+        f"Checked automatically by "
+        "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
+        f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
     )
     start, stop = match.span()
     readme.write_text(
