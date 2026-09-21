@@ -33,5 +33,5 @@ Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Refreshed 2026-09-21 09:29 UTC by [.github/workflows/refresh.yml](.github/workflows/refresh.yml).</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 10:57 UTC.</sub>
 <!-- merged-prs:end -->
