@@ -2,7 +2,7 @@ name: refresh merged PRs
 
 on:
   schedule:
-    - cron: "17 3,15 * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:

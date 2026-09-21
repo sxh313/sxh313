@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
@@ -40,6 +41,49 @@ query($search: String!, $cursor: String) {
 """
 
 STAMP = re.compile(r"\n*<sub>.*</sub>\s*\Z")
+
+SHIELDS = "https://img.shields.io/badge/"
+LANG_STYLE = {
+    "Python": ("3776AB", "python", "white"),
+    "Rust": ("000000", "rust", "white"),
+    "TypeScript": ("3178C6", "typescript", "white"),
+    "JavaScript": ("F7DF1E", "javascript", "black"),
+    "Go": ("00ADD8", "go", "white"),
+    "C++": ("00599C", "cplusplus", "white"),
+    "C": ("A8B9CC", "c", "black"),
+    "Java": ("ED8B00", "openjdk", "white"),
+    "Kotlin": ("7F52FF", "kotlin", "white"),
+    "Swift": ("F05138", "swift", "white"),
+    "Ruby": ("CC342D", "rubygems", "white"),
+    "Shell": ("89E051", "gnu-bash", "black"),
+    "HTML": ("E34F26", "html5", "white"),
+    "Vue": ("4FC08D", "vuedotjs", "black"),
+}
+UNKNOWN_LANG = ("8B949E", "", "white")
+
+
+def quote(text: str) -> str:
+    return urllib.parse.quote(text, safe="").replace("%2D", "--")
+
+
+def metric(label: str, value: str, color: str, logo: str) -> str:
+    """A wide labelled badge, used for the centered totals row."""
+    url = (
+        f"{SHIELDS}{quote(label)}-{quote(value)}-{color}"
+        f"?style=for-the-badge&logo={quote(logo)}&logoColor=white"
+    )
+    return f'<img src="{url}" alt="{value} {label.lower()}" />'
+
+
+def pill(text: str) -> str:
+    """A small brand-coloured tag, used for languages inside table cells."""
+    color, logo, logo_color = LANG_STYLE.get(text, UNKNOWN_LANG)
+    url = f"{SHIELDS}-{quote(text)}-{color}?style=flat-square"
+    if logo:
+        url += f"&logo={quote(logo)}&logoColor={logo_color}"
+    return f"![{text}]({url})"
+
+
 
 
 def gql(token: str, variables: dict) -> dict:
@@ -114,47 +158,41 @@ def render(rows: list[dict], merged_total: int) -> str:
                 "stars": repo["stargazerCount"],
                 "lang": (repo.get("primaryLanguage") or {}).get("name") or "-",
                 "merged": 0,
-                "latest": row["stamp"],
             },
         )
         entry["merged"] += 1
-        entry["latest"] = max(entry["latest"], row["stamp"])
 
-    langs = Counter(entry["lang"] for entry in projects.values())
     per_month = Counter(row["stamp"][:7] for row in rows)
     now = datetime.now(timezone.utc).strftime("%Y-%m")
     order = sorted(projects, key=lambda n: (-projects[n]["stars"], n))
+    total_stars = sum(entry["stars"] for entry in projects.values())
 
     out = [
-        "| Project | ★ | Language | Merged | Latest |",
-        "| :-- | --: | :-- | --: | :-- |",
+        '<p align="center">',
+        "  " + metric("Merged PRs", str(merged_total), "8250DF", "git"),
+        "  " + metric("Projects", str(len(projects)), "0969DA", "box"),
+        "  " + metric("GitHub stars", compact(total_stars), "BF8700", "github"),
+        "</p>",
+        "",
+        "| Project | ★ | Language | Merged |",
+        "| :-- | --: | :-- | --: |",
     ]
     for name in order:
         entry = projects[name]
+        lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
         out.append(
             f"| [`{name}`](https://github.com/{name}) | {compact(entry['stars'])} "
-            f"| {entry['lang']} | {entry['merged']} | {entry['latest'][:10]} |"
+            f"| {lang} | {entry['merged']} |"
         )
-    total_stars = sum(entry["stars"] for entry in projects.values())
-    out.append(
-        f"| **{len(projects)} projects** | **{compact(total_stars)}** | — "
-        f"| **{merged_total}** | since {min(per_month)} |"
-    )
     if len(rows) < merged_total:
-        out.append("")
-        out.append(f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>")
+        out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
     out += [
         "",
-        "<details><summary>Cadence &amp; stack</summary>",
+        "<details><summary>Merged per month</summary>",
         "",
         "```text",
         *cadence(per_month, now),
         "```",
-        "",
-        "**Primary languages**  " + "  ·  ".join(
-            f"{name} `{'█' * max(1, round(count / max(langs.values())) * BAR)}` {count}"
-            for name, count in langs.most_common(5)
-        ),
         "",
         "</details>",
     ]
