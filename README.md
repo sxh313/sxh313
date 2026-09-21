@@ -12,26 +12,27 @@ Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-5-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="5 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-4-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="4 projects" />
-  <img src="https://img.shields.io/badge/GitHub%20stars-58.7k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="58.7k github stars" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-6-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="6 merged prs" />
+  <img src="https://img.shields.io/badge/Projects-5-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="5 projects" />
+  <img src="https://img.shields.io/badge/GitHub%20stars-72.4k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="72.4k github stars" />
 </p>
 
 | Project | ★ | Language | Merged |
 | :-- | --: | :-- | --: |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.1k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.7k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 | [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 
 <details><summary>Merged per month</summary>
 
 ```text
-2026-08  ███░░░░░░░░░  1
-2026-09  ████████████  4
+2026-08  ██░░░░░░░░░░  1
+2026-09  ████████████  5
 ```
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 10:57 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 11:14 UTC.</sub>
 <!-- merged-prs:end -->
