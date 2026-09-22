@@ -28,7 +28,7 @@ automatically. Individual pull requests are not listed here.
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.7k | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | 2 |
-| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.5k | 1 |
+| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.6k | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.6k | 1 |
 | [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | 1 |
 
@@ -41,7 +41,7 @@ automatically. Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 17:15 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 23:02 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
