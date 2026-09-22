@@ -15,7 +15,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-7-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="7 merged prs" />
   <img src="https://img.shields.io/badge/Projects-6-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="6 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-79.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="79.9k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-80.0k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="80.0k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
@@ -24,7 +24,7 @@ automatically. Individual pull requests are not listed here.
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.7k | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.2k | 2 |
-| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.4k | 1 |
+| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.5k | 1 |
 | [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | 1 |
 
 <details><summary>Merged per month</summary>
@@ -36,5 +36,5 @@ automatically. Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 03:53 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 07:02 UTC.</sub>
 <!-- merged-prs:end -->
