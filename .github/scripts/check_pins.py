@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Compare the profile's pinned items with the projects that merged a pull request.
+"""Compare the profile's pinned items with the projects worth pinning.
 
-GitHub has no API for pins (six items, repositories and gists combined, edited only in the
-browser), so this prints the order to apply rather than applying it.
+Target is the strongest merged-into projects above the README's star floor, plus a slot for
+your own non-fork repository. GitHub has no API for pins (six items, repositories and gists
+combined, edited only in the browser), so this prints the order to apply rather than applying it.
 """
 
 from __future__ import annotations
@@ -20,12 +21,27 @@ from render_merged_prs import collect, star_floor  # noqa: E402
 
 API = "https://api.github.com/graphql"
 SLOTS = 6
+# A grid of nothing but other people's repos hides what you build yourself.
+OWN_SLOTS = 1
 
 PINS = """
 query($login: String!) {
   user(login: $login) {
     pinnedItems(first: 6) {
       nodes { __typename ... on Repository { nameWithOwner } }
+    }
+  }
+}
+"""
+
+OWN = """
+query($login: String!) {
+  user(login: $login) {
+    repositories(
+      first: 20, ownerAffiliations: OWNER, isFork: false,
+      orderBy: {field: STARGAZERS, direction: DESC}
+    ) {
+      nodes { nameWithOwner stargazerCount pushedAt }
     }
   }
 }
@@ -72,11 +88,16 @@ def main() -> int:
         merges[name] += 1
     merged_order = sorted(stars, key=lambda n: (-stars[n], n))
 
+    own = gql(token, OWN, {"login": args.owner})["user"]["repositories"]["nodes"]
+    own.sort(key=lambda n: n["pushedAt"] or "", reverse=True)
+    own.sort(key=lambda n: -n["stargazerCount"])
+    own_order = [n["nameWithOwner"] for n in own if n["nameWithOwner"] not in stars]
+
     nodes = gql(token, PINS, {"login": args.owner})["user"]["pinnedItems"]["nodes"]
     current = [n["nameWithOwner"] for n in nodes if n and n["__typename"] == "Repository"]
     gists = sum(1 for n in nodes if n and n["__typename"] != "Repository")
 
-    target = merged_order[:SLOTS]
+    target = merged_order[:SLOTS - OWN_SLOTS] + own_order[:OWN_SLOTS]
     if len(target) < SLOTS:
         # Personal picks keep their place; a gist costs a slot, so count it.
         room = SLOTS - gists
