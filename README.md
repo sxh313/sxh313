@@ -18,7 +18,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-9-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="9 merged prs" />
   <img src="https://img.shields.io/badge/Projects-8-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="8 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-143.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="143.9k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-144.0k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="144.0k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
@@ -41,7 +41,7 @@ automatically. Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 12:33 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 17:15 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
