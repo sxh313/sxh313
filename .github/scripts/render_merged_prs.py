@@ -174,23 +174,27 @@ def render(rows: list[dict], merged_total: int) -> str:
     order = sorted(projects, key=lambda n: (-projects[n]["stars"], n))
     total_stars = sum(entry["stars"] for entry in projects.values())
 
+    langs = {entry["lang"] for entry in projects.values()}
+    # One language across every row is noise, so the column only appears once they differ.
+    show_lang = len(langs) > 1
+
     out = [
         '<p align="center">',
         "  " + metric("Merged PRs", str(merged_total), "8250DF", "git"),
         "  " + metric("Projects", str(len(projects)), "0969DA", "box"),
-        "  " + metric("GitHub stars", compact(total_stars), "BF8700", "github"),
+        "  " + metric("Upstream stars", compact(total_stars), "BF8700", "github"),
         "</p>",
         "",
-        "| Project | ★ | Language | Merged |",
-        "| :-- | --: | :-- | --: |",
+        "| Project | ★ | Language | Merged |" if show_lang else "| Project | ★ | Merged |",
+        "| :-- | --: | :-- | --: |" if show_lang else "| :-- | --: | --: |",
     ]
     for name in order:
         entry = projects[name]
-        lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
-        out.append(
-            f"| [`{name}`](https://github.com/{name}) | {compact(entry['stars'])} "
-            f"| {lang} | {entry['merged']} |"
-        )
+        row = f"| [`{name}`](https://github.com/{name}) | {compact(entry['stars'])} "
+        if show_lang:
+            lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
+            row += f"| {lang} "
+        out.append(row + f"| {entry['merged']} |")
     if len(rows) < merged_total:
         out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
     out += [
