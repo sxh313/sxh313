@@ -43,3 +43,14 @@ automatically. Individual pull requests are not listed here.
 
 <sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 10:37 UTC.</sub>
 <!-- merged-prs:end -->
+
+## Built by me
+
+Projects I started and maintain myself, not upstream contributions. This section is
+hand-written and stays outside the generated block above.
+
+| Project | What it is |
+| :-- | :-- |
+| [`sxh313/knowledge-base`](https://github.com/sxh313/knowledge-base) | 知屿 ZhiYu：本地优先的 AI 学习笔记与知识管理，支持 Web/PWA、Windows、Android |
+| [`sxh313/miniclaw`](https://github.com/sxh313/miniclaw) | 基于 Pi Agent Runtime 的 AI Agent 工作台：多渠道接入、持久化记忆、Skills、MCP、Subagents 与任务调度 |
+| [`sxh313/multimodal-voice-rag`](https://github.com/sxh313/multimodal-voice-rag) | 实时语音问答：ASR → 动态路由 → 混合检索+重排 → LLM → TTS 流式播放，支持声纹识别与引用溯源 |
