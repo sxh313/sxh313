@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Rewrite the merged-PR block of the profile README.
 
-One row per project that merged a pull request. The query selects no title, number or URL,
-so an individual pull request is never named or linked.
+One row per project that merged a pull request and has at least MIN_STARS (100) stars. The
+query selects no title, number or URL, so an individual pull request is never named or linked.
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ END = "<!-- merged-prs:end -->"
 MAX_MONTHS = 12
 MAX_PAGES = 5
 BAR = 12
+MIN_STARS = 100
 
 PAGE = """
 query($search: String!, $cursor: String) {
@@ -123,6 +124,12 @@ def collect(token: str, query: str) -> tuple[list[dict], int]:
     return rows, total
 
 
+def star_floor(rows: list[dict], minimum: int = MIN_STARS) -> tuple[list[dict], int]:
+    """Drop merges in projects under `minimum` stars - they read as padding, not reach."""
+    kept = [row for row in rows if row["repo"]["stargazerCount"] >= minimum]
+    return kept, len(rows) - len(kept)
+
+
 def compact(number: int) -> str:
     return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
 
@@ -218,6 +225,9 @@ def main() -> int:
         if not token:
             raise SystemExit("Set GH_TOKEN / GITHUB_TOKEN, or pass --input.")
         rows, merged_total = collect(token, f"author:{args.owner} is:pr is:merged")
+
+    rows, hidden = star_floor(rows)
+    merged_total -= hidden
 
     body = render(rows, merged_total)
 

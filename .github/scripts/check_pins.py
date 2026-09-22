@@ -16,7 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from render_merged_prs import collect  # noqa: E402
+from render_merged_prs import collect, star_floor  # noqa: E402
 
 API = "https://api.github.com/graphql"
 SLOTS = 6
@@ -62,6 +62,8 @@ def main() -> int:
         raise SystemExit("Set GH_TOKEN / GITHUB_TOKEN.")
 
     rows, _ = collect(token, f"author:{args.owner} is:pr is:merged")
+    # Same floor as the README, so a pin never points at a project the table hides.
+    rows, _ = star_floor(rows)
     stars: dict[str, int] = {}
     merges: Counter = Counter()
     for row in rows:
