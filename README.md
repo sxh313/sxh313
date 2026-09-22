@@ -12,8 +12,8 @@ Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-7-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="7 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-6-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="6 projects" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-8-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="8 merged prs" />
+  <img src="https://img.shields.io/badge/Projects-7-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="7 projects" />
   <img src="https://img.shields.io/badge/GitHub%20stars-79.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="79.9k github stars" />
 </p>
 
@@ -25,15 +25,16 @@ Individual pull requests are not listed here.
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`block/block.github.io`](https://github.com/block/block.github.io) | 1 | ![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat-square&logo=html5&logoColor=white) | 1 |
 
 <details><summary>Merged per month</summary>
 
 ```text
 2026-08  ██░░░░░░░░░░  1
-2026-09  ████████████  6
+2026-09  ████████████  7
 ```
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-21 23:33 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 03:23 UTC.</sub>
 <!-- merged-prs:end -->
