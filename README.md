@@ -6,13 +6,13 @@
   (measured 2026-09-22: gaps of 136, 190, 264 and 312 minutes). Run the workflow manually
   when the page has to catch up sooner.
   The generated block names projects that merged a pull request and have 1,000+ stars,
-  as name + count, then lists those merges one by one in a collapsed section.
+  as name + count.
 -->
 
 ## Open source
 
 Projects with 1,000+ stars that have merged my pull requests upstream, refreshed
-automatically. Expand the collapsed section to read the individual merges.
+automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
@@ -32,45 +32,7 @@ automatically. Expand the collapsed section to read the individual merges.
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.6k | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.7k | 2 |
 
-**All 13 merged pull requests**
-
-- **bytedance/deer-flow** · 2
-  - [`#5691`](https://github.com/bytedance/deer-flow/pull/5691) fix(skillscan): report secrets bound by kwargs, defaults, walrus and co… · 2026-09-23
-  - [`#5687`](https://github.com/bytedance/deer-flow/pull/5687) fix(logging): collapse space-carrying Redirecting slots (#5225 round 16) · 2026-09-23
-
-- **MemPalace/mempalace** · 1
-  - [`#2569`](https://github.com/MemPalace/mempalace/pull/2569) fix(cli): hold the palace lock across the legacy repair · 2026-09-22
-
-- **agentscope-ai/agentscope** · 3
-  - [`#2795`](https://github.com/agentscope-ai/agentscope/pull/2795) fix(tool): judge sed long options that carry an inline value · 2026-09-23
-  - [`#2790`](https://github.com/agentscope-ai/agentscope/pull/2790) fix(embedding): keep the cache when a batch cannot fit its size limit · 2026-09-23
-  - [`#2721`](https://github.com/agentscope-ai/agentscope/pull/2721) fix(tool): copy the tool lists a ToolGroup is constructed with · 2026-09-21
-
-- **livekit/agents** · 1
-  - [`#7362`](https://github.com/livekit/agents/pull/7362) fix(tokenize): keep dotted numbers in one sentence · 2026-09-21
-
-- **microsoft/agent-framework** · 1
-  - [`#8557`](https://github.com/microsoft/agent-framework/pull/8557) Python: Reject every multi-source combination in detect_media_type_from… · 2026-09-21
-
-- **mrexodia/ida-pro-mcp** · 2
-  - [`#525`](https://github.com/mrexodia/ida-pro-mcp/pull/525) fix(discovery): keep instances that bound a wildcard address · 2026-09-20
-  - [`#524`](https://github.com/mrexodia/ida-pro-mcp/pull/524) docs: fix dead Claude Code link in supported clients list · 2026-09-20
-
-- **strands-agents/harness-sdk** · 1
-  - [`#4426`](https://github.com/strands-agents/harness-sdk/pull/4426) fix(tools): stop schema normalization from mutating caller-owned specs · 2026-09-21
-
-- **TencentCloud/Octop** · 2
-  - [`#984`](https://github.com/TencentCloud/Octop/pull/984) fix(cron): 执行失败的定时任务不再留下空会话线程 (#516) · 2026-09-23
-  - [`#989`](https://github.com/TencentCloud/Octop/pull/989) fix(dashboard): MBTI 未配置人格时不再显示空的「已选中」引号 (#973) · 2026-09-22
-
-
-**Merged per month**
-
-```text
-2026-09  ████████████  13
-```
-
-<sub>Every merge above the 1,000-star floor is listed by pull request. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 11:10 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 11:24 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me

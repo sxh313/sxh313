@@ -1,32 +1,27 @@
 #!/usr/bin/env python3
 """Rewrite the merged-PR block of the profile README.
 
-One row per project that merged a pull request and has at least MIN_STARS (1,000) stars, plus a
-collapsed list naming every merge that clears that floor: title, number, date.
+One row per project that merged a pull request and has at least MIN_STARS (1,000) stars. The
+query selects no title, number or URL, so the page carries project-level counts only.
 """
 
 from __future__ import annotations
 
 import argparse
-import html
 import json
 import os
 import re
 import sys
 import urllib.parse
 import urllib.request
-from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
 API = "https://api.github.com/graphql"
 START = "<!-- merged-prs:start -->"
 END = "<!-- merged-prs:end -->"
-MAX_MONTHS = 12
 MAX_PAGES = 5
-BAR = 12
 MIN_STARS = 1000
-TITLE_MAX = 72
 
 PAGE = """
 query($search: String!, $cursor: String) {
@@ -36,9 +31,6 @@ query($search: String!, $cursor: String) {
     nodes {
       ... on PullRequest {
         mergedAt
-        title
-        number
-        url
         baseRepository { nameWithOwner stargazerCount primaryLanguage { name } }
       }
     }
@@ -112,7 +104,7 @@ def gql(token: str, variables: dict) -> dict:
 
 
 def collect(token: str, query: str) -> tuple[list[dict], int]:
-    """Return up to 500 merge records plus the server-side total count."""
+    """Return up to 500 {repo, mergedAt} records plus the server-side total count."""
     seen, rows, cursor, total = set(), [], None, 0
     for _ in range(MAX_PAGES):
         result = gql(token, {"search": query, "cursor": cursor})
@@ -122,15 +114,7 @@ def collect(token: str, query: str) -> tuple[list[dict], int]:
             if not repo or not stamp or (repo["nameWithOwner"], stamp) in seen:
                 continue
             seen.add((repo["nameWithOwner"], stamp))
-            rows.append(
-                {
-                    "repo": repo,
-                    "stamp": stamp,
-                    "title": node.get("title") or "",
-                    "number": node.get("number"),
-                    "url": node.get("url") or "",
-                }
-            )
+            rows.append({"repo": repo, "stamp": stamp})
         if not result["pageInfo"]["hasNextPage"]:
             break
         cursor = result["pageInfo"]["endCursor"]
@@ -145,23 +129,6 @@ def star_floor(rows: list[dict], minimum: int = MIN_STARS) -> tuple[list[dict], 
 
 def compact(number: int) -> str:
     return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
-
-
-def cadence(per_month: Counter, now: str) -> list[str]:
-    if not per_month:
-        return []
-    year, month = (int(part) for part in min(per_month).split("-"))
-    span = []
-    while f"{year:04d}-{month:02d}" <= now:
-        span.append(f"{year:04d}-{month:02d}")
-        year, month = (year + 1, 1) if month == 12 else (year, month + 1)
-    peak = max(per_month.values())
-    out = []
-    for label in span[-MAX_MONTHS:]:
-        count = per_month.get(label, 0)
-        width = max(1, round(count / peak * BAR)) if count else 0
-        out.append(f"{label}  {'█' * width}{'░' * (BAR - width)}  {count}")
-    return out
 
 
 def render(rows: list[dict], merged_total: int) -> str:
@@ -182,8 +149,6 @@ def render(rows: list[dict], merged_total: int) -> str:
         )
         entry["merged"] += 1
 
-    per_month = Counter(row["stamp"][:7] for row in rows)
-    now = datetime.now(timezone.utc).strftime("%Y-%m")
     order = sorted(projects, key=lambda n: (-projects[n]["stars"], n))
     total_stars = sum(entry["stars"] for entry in projects.values())
 
@@ -210,29 +175,6 @@ def render(rows: list[dict], merged_total: int) -> str:
         out.append(row + f"| {entry['merged']} |")
     if len(rows) < merged_total:
         out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
-    listed = [row for row in rows if row.get("title") and row.get("url")]
-    if listed:
-        out += ["", f"**All {len(listed)} merged pull requests**", ""]
-        for name in order:
-            entries = sorted(
-                (row for row in listed if row["repo"]["nameWithOwner"] == name),
-                key=lambda row: row["stamp"],
-                reverse=True,
-            )
-            if not entries:
-                continue
-            out += [f"- **{name}** · {len(entries)}"]
-            for entry in entries:
-                title = html.escape(entry["title"], quote=False)
-                if len(title) > TITLE_MAX:
-                    title = title[: TITLE_MAX - 1].rstrip() + "…"
-                out.append(
-                    f"  - [`#{entry['number']}`]({entry['url']}) {title}"
-                    f" · {entry['stamp'][:10]}"
-                )
-            out.append("")
-    if per_month:
-        out += ["", "**Merged per month**", "", "```text", *cadence(per_month, now), "```"]
     return "\n".join(out)
 
 
@@ -273,7 +215,7 @@ def main() -> int:
         return 0
 
     block = (
-        f"{body}\n\n<sub>Every merge above the {MIN_STARS:,}-star floor is listed by pull request. "
+        f"{body}\n\n<sub>Merges only, counted per project above the {MIN_STARS:,}-star floor. "
         f"Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
