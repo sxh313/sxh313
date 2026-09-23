@@ -18,7 +18,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-16-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="16 merged prs" />
   <img src="https://img.shields.io/badge/Projects-11-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="11 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-270.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="270.9k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-271.0k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="271.0k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -26,16 +26,16 @@ automatically. Individual pull requests are not listed here.
 | [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`oraios/serena`](https://github.com/oraios/serena) | 29.7k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`oraios/serena`](https://github.com/oraios/serena) | 29.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
-| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.7k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`CursorTouch/Windows-MCP`](https://github.com/CursorTouch/Windows-MCP) | 7.1k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.8k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.7k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 17:18 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 20:31 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
