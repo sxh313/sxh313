@@ -212,7 +212,7 @@ def render(rows: list[dict], merged_total: int) -> str:
         out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
     listed = [row for row in rows if row.get("title") and row.get("url")]
     if listed:
-        out += ["", f"<details><summary>All {len(listed)} merged pull requests</summary>", ""]
+        out += ["", f"**All {len(listed)} merged pull requests**", ""]
         for name in order:
             entries = sorted(
                 (row for row in listed if row["repo"]["nameWithOwner"] == name),
@@ -221,27 +221,18 @@ def render(rows: list[dict], merged_total: int) -> str:
             )
             if not entries:
                 continue
-            out += [f"**{name}** · {len(entries)}", ""]
+            out += [f"- **{name}** · {len(entries)}"]
             for entry in entries:
                 title = html.escape(entry["title"], quote=False)
                 if len(title) > TITLE_MAX:
                     title = title[: TITLE_MAX - 1].rstrip() + "…"
                 out.append(
-                    f"- [`#{entry['number']}`]({entry['url']}) {title}"
+                    f"  - [`#{entry['number']}`]({entry['url']}) {title}"
                     f" · {entry['stamp'][:10]}"
                 )
             out.append("")
-        out += ["</details>"]
-    out += [
-        "",
-        "<details><summary>Merged per month</summary>",
-        "",
-        "```text",
-        *cadence(per_month, now),
-        "```",
-        "",
-        "</details>",
-    ]
+    if per_month:
+        out += ["", "**Merged per month**", "", "```text", *cadence(per_month, now), "```"]
     return "\n".join(out)
 
 
