@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Rewrite the merged-PR block of the profile README.
 
-One row per project that merged a pull request and has at least MIN_STARS (1,000) stars. The
-query selects no title, number or URL, so an individual pull request is never named or linked.
+One row per project that merged a pull request and has at least MIN_STARS (1,000) stars, plus a
+collapsed list naming every merge that clears that floor: title, number, date.
 """
 
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -25,6 +26,7 @@ MAX_MONTHS = 12
 MAX_PAGES = 5
 BAR = 12
 MIN_STARS = 1000
+TITLE_MAX = 72
 
 PAGE = """
 query($search: String!, $cursor: String) {
@@ -34,6 +36,9 @@ query($search: String!, $cursor: String) {
     nodes {
       ... on PullRequest {
         mergedAt
+        title
+        number
+        url
         baseRepository { nameWithOwner stargazerCount primaryLanguage { name } }
       }
     }
@@ -107,7 +112,7 @@ def gql(token: str, variables: dict) -> dict:
 
 
 def collect(token: str, query: str) -> tuple[list[dict], int]:
-    """Return up to 500 {repo, mergedAt} records plus the server-side total count."""
+    """Return up to 500 merge records plus the server-side total count."""
     seen, rows, cursor, total = set(), [], None, 0
     for _ in range(MAX_PAGES):
         result = gql(token, {"search": query, "cursor": cursor})
@@ -117,7 +122,15 @@ def collect(token: str, query: str) -> tuple[list[dict], int]:
             if not repo or not stamp or (repo["nameWithOwner"], stamp) in seen:
                 continue
             seen.add((repo["nameWithOwner"], stamp))
-            rows.append({"repo": repo, "stamp": stamp})
+            rows.append(
+                {
+                    "repo": repo,
+                    "stamp": stamp,
+                    "title": node.get("title") or "",
+                    "number": node.get("number"),
+                    "url": node.get("url") or "",
+                }
+            )
         if not result["pageInfo"]["hasNextPage"]:
             break
         cursor = result["pageInfo"]["endCursor"]
@@ -197,6 +210,28 @@ def render(rows: list[dict], merged_total: int) -> str:
         out.append(row + f"| {entry['merged']} |")
     if len(rows) < merged_total:
         out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
+    listed = [row for row in rows if row.get("title") and row.get("url")]
+    if listed:
+        out += ["", f"<details><summary>All {len(listed)} merged pull requests</summary>", ""]
+        for name in order:
+            entries = sorted(
+                (row for row in listed if row["repo"]["nameWithOwner"] == name),
+                key=lambda row: row["stamp"],
+                reverse=True,
+            )
+            if not entries:
+                continue
+            out += [f"**{name}** · {len(entries)}", ""]
+            for entry in entries:
+                title = html.escape(entry["title"], quote=False)
+                if len(title) > TITLE_MAX:
+                    title = title[: TITLE_MAX - 1].rstrip() + "…"
+                out.append(
+                    f"- [`#{entry['number']}`]({entry['url']}) {title}"
+                    f" · {entry['stamp'][:10]}"
+                )
+            out.append("")
+        out += ["</details>"]
     out += [
         "",
         "<details><summary>Merged per month</summary>",
@@ -247,7 +282,7 @@ def main() -> int:
         return 0
 
     block = (
-        f"{body}\n\n<sub>Merges only, per project - no individual pull request is listed. "
+        f"{body}\n\n<sub>Every merge above the {MIN_STARS:,}-star floor is listed by pull request. "
         f"Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
