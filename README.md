@@ -16,31 +16,31 @@ automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-10-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="10 merged prs" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-13-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="13 merged prs" />
   <img src="https://img.shields.io/badge/Projects-8-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="8 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-226.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.9k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-227.0k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="227.0k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
 | :-- | --: | --: |
 | [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | 2 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.2k | 1 |
-| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | 1 |
+| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | 3 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.7k | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | 2 |
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.6k | 1 |
-| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.7k | 1 |
+| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.7k | 2 |
 
 <details><summary>Merged per month</summary>
 
 ```text
-2026-09  ████████████  10
+2026-09  ████████████  13
 ```
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 06:37 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 09:30 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
