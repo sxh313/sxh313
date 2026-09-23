@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rewrite the merged-PR block of the profile README.
 
-One row per project that merged a pull request and has at least MIN_STARS (100) stars. The
+One row per project that merged a pull request and has at least MIN_STARS (1,000) stars. The
 query selects no title, number or URL, so an individual pull request is never named or linked.
 """
 
@@ -24,7 +24,7 @@ END = "<!-- merged-prs:end -->"
 MAX_MONTHS = 12
 MAX_PAGES = 5
 BAR = 12
-MIN_STARS = 100
+MIN_STARS = 1000
 
 PAGE = """
 query($search: String!, $cursor: String) {

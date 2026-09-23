@@ -5,25 +5,25 @@
   minutes, but GitHub throttles scheduled runs, so in practice it lands every 2-5 hours
   (measured 2026-09-22: gaps of 136, 190, 264 and 312 minutes). Run the workflow manually
   when the page has to catch up sooner.
-  The generated block names projects that merged a pull request and have 100+ stars,
+  The generated block names projects that merged a pull request and have 1,000+ stars,
   as name + count.
 -->
 
 ## Open source
 
-Projects with 100+ stars that have merged my pull requests upstream, refreshed
+Projects with 1,000+ stars that have merged my pull requests upstream, refreshed
 automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-10-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="10 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-9-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="9 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-226.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.9k upstream stars" />
+  <img src="https://img.shields.io/badge/Projects-8-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="8 projects" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-226.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.8k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
 | :-- | --: | --: |
-| [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | 1 |
+| [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | 2 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.2k | 1 |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | 1 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | 1 |
@@ -31,18 +31,16 @@ automatically. Individual pull requests are not listed here.
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | 2 |
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.6k | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.6k | 1 |
-| [`limouren2000/YYGlobal`](https://github.com/limouren2000/YYGlobal) | 112 | 1 |
 
 <details><summary>Merged per month</summary>
 
 ```text
-2026-08  █░░░░░░░░░░░  1
-2026-09  ████████████  9
+2026-09  ████████████  10
 ```
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 01:26 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 02:29 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
