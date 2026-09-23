@@ -18,7 +18,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-10-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="10 merged prs" />
   <img src="https://img.shields.io/badge/Projects-8-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="8 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-226.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.8k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-226.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.9k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
@@ -30,7 +30,7 @@ automatically. Individual pull requests are not listed here.
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.7k | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | 2 |
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 7.6k | 1 |
-| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.6k | 1 |
+| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.7k | 1 |
 
 <details><summary>Merged per month</summary>
 
@@ -40,7 +40,7 @@ automatically. Individual pull requests are not listed here.
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 02:29 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 06:37 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
