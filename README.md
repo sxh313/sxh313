@@ -16,13 +16,14 @@ automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-9-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="9 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-8-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="8 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-144.0k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="144.0k upstream stars" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-10-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="10 merged prs" />
+  <img src="https://img.shields.io/badge/Projects-9-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="9 projects" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-226.9k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="226.9k upstream stars" />
 </p>
 
 | Project | ★ | Merged |
 | :-- | --: | --: |
+| [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | 1 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.2k | 1 |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | 1 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | 1 |
@@ -35,13 +36,13 @@ automatically. Individual pull requests are not listed here.
 <details><summary>Merged per month</summary>
 
 ```text
-2026-08  ██░░░░░░░░░░  1
-2026-09  ████████████  8
+2026-08  █░░░░░░░░░░░  1
+2026-09  ████████████  9
 ```
 
 </details>
 
-<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-22 23:02 UTC.</sub>
+<sub>Merges only, per project - no individual pull request is listed. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 01:26 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
