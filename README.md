@@ -16,7 +16,7 @@ automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-19-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="19 merged prs" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-27-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="27 merged prs" />
   <img src="https://img.shields.io/badge/Projects-13-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="13 projects" />
   <img src="https://img.shields.io/badge/Upstream%20stars-414.7k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="414.7k upstream stars" />
 </p>
@@ -35,9 +35,9 @@ automatically. Individual pull requests are not listed here.
 | [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 8.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`CursorTouch/Windows-MCP`](https://github.com/CursorTouch/Windows-MCP) | 7.1k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.8k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
+| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-24 06:31 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-24 07:19 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
