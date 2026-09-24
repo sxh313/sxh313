@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Compare the profile's pinned items with the projects worth pinning.
 
-Target is the strongest merged-into projects above the README's star floor, plus a slot for
-your own non-fork repository. GitHub has no API for pins (six items, repositories and gists
+Target is your own non-fork repository first, then the strongest merged-into projects above the
+README's star floor. GitHub has no API for pins (six items, repositories and gists
 combined, edited only in the browser), so this prints the order to apply rather than applying it.
 """
 
@@ -97,7 +97,8 @@ def main() -> int:
     current = [n["nameWithOwner"] for n in nodes if n and n["__typename"] == "Repository"]
     gists = sum(1 for n in nodes if n and n["__typename"] != "Repository")
 
-    target = merged_order[:SLOTS - OWN_SLOTS] + own_order[:OWN_SLOTS]
+    # Own work leads the grid: the merged projects prove reach, this proves authorship.
+    target = own_order[:OWN_SLOTS] + merged_order[:SLOTS - OWN_SLOTS]
     if len(target) < SLOTS:
         # Personal picks keep their place; a gist costs a slot, so count it.
         room = SLOTS - gists
