@@ -27,7 +27,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-33-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="33 merged prs" />
   <img src="https://img.shields.io/badge/Projects-15-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="15 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-481.5k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="481.5k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-481.6k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="481.6k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -48,5 +48,5 @@ automatically. Individual pull requests are not listed here.
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.8k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-24 20:43 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-24 23:29 UTC.</sub>
 <!-- merged-prs:end -->
