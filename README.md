@@ -25,7 +25,7 @@ automatically. Individual pull requests are not listed here.
 | :-- | --: | :-- | --: |
 | [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 82.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
+| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
 | [`oraios/serena`](https://github.com/oraios/serena) | 29.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
@@ -35,7 +35,7 @@ automatically. Individual pull requests are not listed here.
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.8k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-23 23:06 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-24 01:23 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Built by me
