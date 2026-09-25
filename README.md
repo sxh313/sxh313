@@ -43,7 +43,7 @@ requests are not listed here.
 ## Contribution graph
 
 <!-- activity:start -->
-Rolling 12 months, counted by GitHub's own contribution graph.
+Rolling 3 months, counted by GitHub's own contribution graph.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Contributions-6.7k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="6.7k contributions" />
