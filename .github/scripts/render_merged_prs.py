@@ -30,6 +30,16 @@ MAX_PAGES = 5
 MIN_STARS = 1000
 DESC_MAX = 90
 
+# The page shows these projects and nothing else. Names are matched exactly, so a
+# transfer or rename silently drops the row rather than showing the wrong project.
+FEATURED = (
+    "openclaw/openclaw",
+    "bytedance/deer-flow",
+    "agentscope-ai/agentscope",
+    "QwenLM/qwen-code",
+    "TencentCloud/Octop",
+)
+
 PAGE = """
 query($search: String!, $cursor: String) {
   search(query: $search, type: ISSUE, first: 100, after: $cursor) {
@@ -272,8 +282,13 @@ def main() -> int:
     rows, hidden = star_floor(rows)
     merged_total -= hidden
 
+    keep = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
+    merged_total -= len(rows) - len(keep)
+    rows = keep
+
     body = render(rows, merged_total) + (
-        f"\n\n<sub>Merges only, counted per project above the {MIN_STARS:,}-star floor. "
+        f"\n\n<sub>Merges only, counted in the {len(FEATURED)} projects listed above - "
+        "a hand-picked set, so the totals are lower than everything merged. "
         "Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
