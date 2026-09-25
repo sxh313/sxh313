@@ -5,24 +5,26 @@
   which is GitHub's floor for scheduled runs, but delivery is not guaranteed: measured
   2026-09-23/24 the runs actually landed 136-342 minutes apart. Run the workflow manually
   when the page has to catch up sooner.
-  The generated block lists the five projects in FEATURED inside
-  .github/scripts/render_merged_prs.py, with their own repository description and a
-  merge count. Everything the page shows is recomputed from those five, so the
-  headline totals sit below the real merge count by design.
+  The generated block's badges cover every project with 1,000+ stars that has merged a pull
+  request. The table names only the five in FEATURED inside
+  .github/scripts/render_merged_prs.py, with their own repository description and a merge
+  count, and its last row carries the remainder - so the visible rows always add up to the
+  badges instead of reading as the whole set.
   The snake at the bottom is rendered by .github/workflows/snake.yml into the
   github-snake branch, so it is animation frames, not a hand-written asset.
 -->
 
 ## Open source
 
-Five projects that have merged my pull requests, refreshed automatically. Individual pull
+Projects that have merged my pull requests, refreshed automatically. The badges count every
+one of them; the table names five, with the rest on the last row. Individual pull
 requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-20-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="20 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-5-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="5 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-538.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="538.8k upstream stars" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-35-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="35 merged prs" />
+  <img src="https://img.shields.io/badge/Projects-16-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="16 projects" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-872.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.8k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -32,8 +34,9 @@ requests are not listed here.
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
 | [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
+| <sub>… and 11 more</sub> | 333.9k | — | 15 |
 
-<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:18 UTC.</sub>
+<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:25 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph

@@ -304,7 +304,7 @@ def main() -> int:
     featured = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
 
     body = render(rows, featured, merged_total) + (
-        f"\n\n<sub>Merges only, counted across every project with {compact(MIN_STARS)}+ stars. "
+        f"\n\n<sub>Merges only, counted across every project with {MIN_STARS:,}+ stars. "
         "The table names the five above; the last row carries the rest. "
         "Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
