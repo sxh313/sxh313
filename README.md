@@ -36,7 +36,7 @@ requests are not listed here.
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 | <sub>… and 11 more</sub> | 333.9k | — | 15 |
 
-<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:25 UTC.</sub>
+<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:26 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
