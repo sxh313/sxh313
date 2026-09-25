@@ -33,7 +33,8 @@ jobs:
         run: |
           set -euo pipefail
           git switch --orphan github-snake
-          git rm -rq --cached .
+          # A fresh orphan already has an empty index on newer git, so only clear what is there.
+          git rm -rq --cached . 2>/dev/null || true
           git add github-snake.svg github-snake-dark.svg
           git diff --cached --quiet && { echo "frames unchanged"; exit 0; }
           git -c user.name="github-actions[bot]" \
