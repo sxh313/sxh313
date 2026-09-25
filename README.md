@@ -24,7 +24,7 @@ requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-36-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="36 merged prs" />
   <img src="https://img.shields.io/badge/Projects-17-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="17 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-874.7k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="874.7k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-874.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="874.8k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -36,7 +36,7 @@ requests are not listed here.
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 | <sub>… and 12 more</sub> | 335.9k | — | 16 |
 
-<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 17:15 UTC.</sub>
+<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 17:57 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
