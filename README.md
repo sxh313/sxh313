@@ -18,31 +18,20 @@ automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-35-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="35 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-16-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="16 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-872.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.8k upstream stars" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-20-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="20 merged prs" />
+  <img src="https://img.shields.io/badge/Projects-5-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="5 projects" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-538.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="538.8k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
 | :-- | --: | :-- | --: |
 | [`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</sub> | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>An open-source long-horizon SuperAgent harness that researches, codes, and creates. With …</sub> | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`headroomlabs-ai/headroom`](https://github.com/headroomlabs-ai/headroom)<br><sub>Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer …</sub> | 73.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`diegosouzapw/OmniRoute`](https://github.com/diegosouzapw/OmniRoute)<br><sub>Never stop coding. Free MIT AI gateway: one endpoint, 359 providers (150+ free), 1200+ …</sub> | 70.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace)<br><sub>The best-benchmarked open-source AI memory system. And it's free.</sub> | 59.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`TriliumNext/Trilium`](https://github.com/TriliumNext/Trilium)<br><sub>Build your personal knowledge base with Trilium Notes</sub> | 38.0k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 2 |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
-| [`oraios/serena`](https://github.com/oraios/serena)<br><sub>A powerful MCP toolkit for coding, providing semantic retrieval and editing capabilities - …</sub> | 29.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`livekit/agents`](https://github.com/livekit/agents)<br><sub>A framework for building realtime voice AI agents 🤖🎙️📹</sub> | 14.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework)<br><sub>A framework for building, orchestrating and deploying AI agents and multi-agent workflows …</sub> | 13.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp)<br><sub>AI-powered reverse engineering assistant that bridges IDA Pro with language models through …</sub> | 12.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
-| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk)<br><sub>Build an agent harness and control it end-to-end. Open-source SDK for production AI agents …</sub> | 8.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`CursorTouch/Windows-MCP`](https://github.com/CursorTouch/Windows-MCP)<br><sub>MCP Server for Computer Use in Windows</sub> | 7.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp)<br><sub>Model Context Protocol Server for Mobile Automation and Scraping (iOS, Android, Emulators …</sub> | 6.9k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:14 UTC.</sub>
+<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:16 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
