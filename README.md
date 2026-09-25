@@ -29,14 +29,14 @@ requests are not listed here.
 
 | Project | ★ | Language | Merged |
 | :-- | --: | :-- | --: |
-| [`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</sub> | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>An open-source long-horizon SuperAgent harness that researches, codes, and creates. With …</sub> | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
-| [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
+| <img src="https://github.com/openclaw.png?size=32" width="16" height="16" alt="" />&nbsp;[`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</sub> | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| <img src="https://github.com/bytedance.png?size=32" width="16" height="16" alt="" />&nbsp;[`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>An open-source long-horizon SuperAgent harness that researches, codes, and creates. With …</sub> | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
+| <img src="https://github.com/agentscope-ai.png?size=32" width="16" height="16" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
+| <img src="https://github.com/QwenLM.png?size=32" width="16" height="16" alt="" />&nbsp;[`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| <img src="https://github.com/TencentCloud.png?size=32" width="16" height="16" alt="" />&nbsp;[`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 | <sub>… and 12 more</sub> | 335.9k | — | 16 |
 
-<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 17:57 UTC.</sub>
+<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 19:00 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph

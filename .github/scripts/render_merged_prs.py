@@ -227,7 +227,9 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     ]
     for name in sorted(aggregate(featured_rows), key=by_stars):
         entry = projects[name]
-        label = f"[`{name}`](https://github.com/{name})"
+        owner = name.split("/", 1)[0]
+        icon = f'<img src="https://github.com/{owner}.png?size=32" width="16" height="16" alt="" />&nbsp;'
+        label = f"{icon}[`{name}`](https://github.com/{name})"
         if entry["desc"]:
             label += f"<br><sub>{clip(entry['desc'])}</sub>"
         row = f"| {label} | {stars(cells[name])} "
