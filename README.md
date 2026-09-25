@@ -11,15 +11,6 @@
   github-snake branch, so it is animation frames, not a hand-written asset.
 -->
 
-## What I build
-
-Projects I started and maintain myself, not upstream contributions.
-
-| **[知屿 ZhiYu](https://github.com/sxh313/knowledge-base)** | **[miniclaw](https://github.com/sxh313/miniclaw)** | **[实时语音 RAG](https://github.com/sxh313/multimodal-voice-rag)** |
-| :-- | :-- | :-- |
-| 本地优先的 AI 知识管理，Web/PWA · Windows · Android 三端 | 基于 Pi Agent Runtime 的 AI Agent 工作台：多渠道接入、持久化记忆、任务调度 | 端到端语音问答：ASR → 动态路由 → 混合检索+重排 → LLM → TTS 流式播放，声纹区分多人 |
-| Agent 写入前先给计划、风险和真实 diff，支持逐项确认、事务回滚与一键撤销；复习问答必须过 Citation 白名单校验 | Skills / MCP / Plugins / Subagents 按 Workspace · Session · owner 统一解析，运行前算出有效能力 Manifest 再注入 | 首包 ~3.3s，拆到组件：VAD 250ms · ASR 500ms · 路由 300ms · 检索 50ms · 首 token 800ms · TTS 1.4s；单卡 ~10GB 显存 |
-
 ## Open source
 
 Projects with 1,000+ stars that have merged my pull requests upstream, refreshed

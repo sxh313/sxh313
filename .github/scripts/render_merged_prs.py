@@ -269,7 +269,9 @@ def main() -> int:
     readme = args.readme
     text = readme.read_text(encoding="utf-8")
     text, changed = replace(text, START, END, body)
-    if token:
+    # Only CI may write the activity block: a personal token sees private repositories, so a
+    # local run renders larger numbers than the runner does and the two would fight forever.
+    if token and os.environ.get("GITHUB_ACTIONS") == "true":
         text, activity_changed = replace(
             text, ACTIVITY_START, ACTIVITY_END, render_activity(token, args.owner)
         )
