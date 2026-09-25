@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Rewrite the generated blocks of the profile README.
+"""Rewrite the generated merged-PR block of the profile README.
 
-Merged-PR block: badges over every project that merged a pull request and has at least
-MIN_STARS (1,000) stars, then one row per FEATURED project carrying that project's own
-repository description, then an ellipsis row for the remainder so the visible counts still
-add up to the badges. The query selects no PR title, number or URL, so the page stays at
-project-level counts only.
+Badges over every project that merged a pull request and has at least MIN_STARS (1,000) stars,
+then one row per FEATURED project - name, what the project is, language, stars, merges - then
+an ellipsis row for the remainder so every visible column adds up to the badges. The query
+selects no PR title, number or URL, so the page stays at project-level counts only.
 
-Activity block: contribution, commit and repository totals for the trailing 12 months, read
-from the same graph the profile page draws.
+Nothing on this page duplicates what GitHub already draws next to it: the contribution totals
+are deliberately not repeated here, because the profile's own graph header says the same
+number one section later.
 """
 
 from __future__ import annotations
@@ -20,14 +20,12 @@ import re
 import sys
 import urllib.parse
 import urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 API = "https://api.github.com/graphql"
 START = "<!-- merged-prs:start -->"
 END = "<!-- merged-prs:end -->"
-ACTIVITY_START = "<!-- activity:start -->"
-ACTIVITY_END = "<!-- activity:end -->"
 MAX_PAGES = 5
 MIN_STARS = 1000
 DESC_MAX = 90
@@ -58,62 +56,25 @@ query($search: String!, $cursor: String) {
 }
 """
 
-ACTIVITY = """
-query($login: String!, $from: DateTime!, $to: DateTime!) {
-  user(login: $login) {
-    contributionsCollection(from: $from, to: $to) {
-      contributionCalendar { totalContributions }
-      totalCommitContributions
-      totalRepositoryContributions
-    }
-  }
-}
-"""
-
 STAMP = re.compile(r"\n*<sub>.*</sub>\s*\Z")
 
 SHIELDS = "https://img.shields.io/badge/"
-LANG_STYLE = {
-    "Python": ("3776AB", "python", "white"),
-    "Rust": ("000000", "rust", "white"),
-    "TypeScript": ("3178C6", "typescript", "white"),
-    "JavaScript": ("F7DF1E", "javascript", "black"),
-    "Go": ("00ADD8", "go", "white"),
-    "C++": ("00599C", "cplusplus", "white"),
-    "C": ("A8B9CC", "c", "black"),
-    "Java": ("ED8B00", "openjdk", "white"),
-    "Kotlin": ("7F52FF", "kotlin", "white"),
-    "Swift": ("F05138", "swift", "white"),
-    "Ruby": ("CC342D", "rubygems", "white"),
-    "Shell": ("89E051", "gnu-bash", "black"),
-    "HTML": ("E34F26", "html5", "white"),
-    "Vue": ("4FC08D", "vuedotjs", "black"),
-}
-UNKNOWN_LANG = ("8B949E", "", "white")
+# One badge style and exactly two colours for the whole page. Brand-coloured language pills and
+# a different colour per metric made the block look like three dashboards stacked on each other.
+LABEL_COLOR = "24292F"
+ACCENT = "8250DF"
 
 
 def quote(text: str) -> str:
     return urllib.parse.quote(text, safe="").replace("%2D", "--")
 
 
-def metric(label: str, value: str, color: str, logo: str) -> str:
-    """A wide labelled badge, used for the centered totals row."""
+def metric(label: str, value: str) -> str:
     url = (
-        f"{SHIELDS}{quote(label)}-{quote(value)}-{color}"
-        f"?style=for-the-badge&logo={quote(logo)}&logoColor=white"
+        f"{SHIELDS}{quote(label)}-{quote(value)}-{ACCENT}"
+        f"?style=flat-square&labelColor={LABEL_COLOR}"
     )
     return f'<img src="{url}" alt="{value} {label.lower()}" />'
-
-
-def pill(text: str) -> str:
-    """A small brand-coloured tag, used for languages inside table cells."""
-    color, logo, logo_color = LANG_STYLE.get(text, UNKNOWN_LANG)
-    url = f"{SHIELDS}-{quote(text)}-{color}?style=flat-square"
-    if logo:
-        url += f"&logo={quote(logo)}&logoColor={logo_color}"
-    return f"![{text}]({url})"
-
-
 
 
 def gql(token: str, query: str, variables: dict) -> dict:
@@ -157,10 +118,6 @@ def star_floor(rows: list[dict], minimum: int = MIN_STARS) -> tuple[list[dict], 
     """Drop merges in projects under `minimum` stars - they read as padding, not reach."""
     kept = [row for row in rows if row["repo"]["stargazerCount"] >= minimum]
     return kept, len(rows) - len(kept)
-
-
-def compact(number: int) -> str:
-    return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
 
 
 def tenths(number: int) -> int:
@@ -211,30 +168,23 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     by_stars = lambda n: (-cells[n], n)
     total_star_cells = sum(cells.values())
 
-    langs = {entry["lang"] for entry in projects.values()}
-    # One language across every row is noise, so the column only appears once they differ.
-    show_lang = len(langs) > 1
-
     out = [
         '<p align="center">',
-        "  " + metric("Merged PRs", str(merged_total), "8250DF", "git"),
-        "  " + metric("Projects", str(len(projects)), "0969DA", "box"),
-        "  " + metric("Upstream stars", stars(total_star_cells), "BF8700", "github"),
+        "  " + metric("Merged PRs", str(merged_total)),
+        "  " + metric("Projects", str(len(projects))),
+        "  " + metric("Upstream stars", stars(total_star_cells)),
         "</p>",
         "",
-        "| Project | ★ | Language | Merged |" if show_lang else "| Project | ★ | Merged |",
-        "| :-- | --: | :-- | --: |" if show_lang else "| :-- | --: | --: |",
+        "| Project | What it is | Language | ★ | Merged |",
+        "| :-- | :-- | :-- | --: | --: |",
     ]
     for name in sorted(aggregate(featured_rows), key=by_stars):
         entry = projects[name]
-        label = f"[`{name}`](https://github.com/{name})"
-        if entry["desc"]:
-            label += f"<br><sub>{clip(entry['desc'])}</sub>"
-        row = f"| {label} | {stars(cells[name])} "
-        if show_lang:
-            lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
-            row += f"| {lang} "
-        out.append(row + f"| {entry['merged']} |")
+        lang = entry["lang"] if entry["lang"] != "-" else "—"
+        out.append(
+            f"| [`{name}`](https://github.com/{name}) | {clip(entry['desc'])} "
+            f"| {lang} | {stars(cells[name])} | {entry['merged']} |"
+        )
 
     # The listed rows are a shortlist, so the remainder gets its own row: every column then
     # adds up to the badge above it, and nothing on the page over-claims.
@@ -242,41 +192,14 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     hidden_projects = len(projects) - len(listed)
     if hidden_projects > 0:
         rest = total_star_cells - sum(cells[name] for name in listed)
-        note = f"<sub>… and {hidden_projects} more</sub>"
-        row = f"| {note} | {stars(rest)} "
-        row += "| — " if show_lang else ""
-        out.append(row + f"| {merged_total - len(featured_rows)} |")
+        out.append(
+            f"| _… {hidden_projects} more_ | | | {stars(rest)} "
+            f"| {merged_total - len(featured_rows)} |"
+        )
 
     if len(all_rows) < merged_total:
         out += ["", f"<sub>Per-project counts cover the {len(all_rows)} most recent merges.</sub>"]
     return "\n".join(out)
-
-
-def render_activity(token: str, owner: str) -> str:
-    """The three totals GitHub's own contribution graph already publishes."""
-    now = datetime.now(timezone.utc)
-    collection = gql(
-        token,
-        ACTIVITY,
-        {
-            "login": owner,
-            "from": (now - timedelta(days=365)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "to": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        },
-    )["user"]["contributionsCollection"]
-
-    totals = [
-        ("Contributions", collection["contributionCalendar"]["totalContributions"], "F57D26", "github"),
-        ("Commits", collection["totalCommitContributions"], "2EA043", "git"),
-        ("Repositories touched", collection["totalRepositoryContributions"], "8250DF", "box"),
-    ]
-    out = [
-        "Rolling 12 months, counted by GitHub's own contribution graph.",
-        "",
-        '<p align="center">',
-    ]
-    out += [f"  {metric(label, compact(value), color, logo)}" for label, value, color, logo in totals]
-    return "\n".join(out + ["</p>"])
 
 
 def replace(text: str, start_tag: str, end_tag: str, body: str) -> tuple[str, bool]:
@@ -319,23 +242,14 @@ def main() -> int:
     featured = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
 
     body = render(rows, featured, merged_total) + (
-        f"\n\n<sub>Merges only, counted across every project with {MIN_STARS:,}+ stars. "
-        "The table names the five above; the last row carries the rest. "
-        "Checked automatically by "
+        f"\n\n<sub>Merges only, in projects with {MIN_STARS:,}+ stars. Refreshed by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
-        f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
+        f" &middot; {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</sub>"
     )
 
     readme = args.readme
     text = readme.read_text(encoding="utf-8")
     text, changed = replace(text, START, END, body)
-    # Only CI may write the activity block: a personal token sees private repositories, so a
-    # local run renders larger numbers than the runner does and the two would fight forever.
-    if token and os.environ.get("GITHUB_ACTIONS") == "true":
-        text, activity_changed = replace(
-            text, ACTIVITY_START, ACTIVITY_END, render_activity(token, args.owner)
-        )
-        changed = changed or activity_changed
 
     if changed:
         readme.write_text(text, encoding="utf-8", newline="\n")
