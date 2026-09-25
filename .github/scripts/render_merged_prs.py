@@ -2,8 +2,8 @@
 """Rewrite the generated blocks of the profile README.
 
 Merged-PR block: one row per project that merged a pull request and has at least MIN_STARS
-(1,000) stars. The query selects no title, number or URL, so the page carries project-level
-counts only.
+(1,000) stars, carrying that project's own repository description. The query selects no PR
+title, number or URL, so the page stays at project-level counts only.
 
 Activity block: contribution, commit and repository totals for the trailing 12 months, read
 from the same graph the profile page draws.
@@ -28,6 +28,7 @@ ACTIVITY_START = "<!-- activity:start -->"
 ACTIVITY_END = "<!-- activity:end -->"
 MAX_PAGES = 5
 MIN_STARS = 1000
+DESC_MAX = 90
 
 PAGE = """
 query($search: String!, $cursor: String) {
@@ -37,7 +38,7 @@ query($search: String!, $cursor: String) {
     nodes {
       ... on PullRequest {
         mergedAt
-        baseRepository { nameWithOwner stargazerCount primaryLanguage { name } }
+        baseRepository { nameWithOwner stargazerCount description primaryLanguage { name } }
       }
     }
   }
@@ -149,6 +150,14 @@ def compact(number: int) -> str:
     return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
 
 
+def clip(text: str, limit: int = DESC_MAX) -> str:
+    """One tidy table cell out of whatever the maintainer wrote in the repo description."""
+    flat = " ".join(text.split()).replace("|", "\\|")
+    if len(flat) <= limit:
+        return flat
+    return flat[: limit + 1].rsplit(" ", 1)[0].rstrip(",;:") + " …"
+
+
 def render(rows: list[dict], merged_total: int) -> str:
     if not rows:
         return "_Nothing merged upstream yet._"
@@ -161,6 +170,7 @@ def render(rows: list[dict], merged_total: int) -> str:
             name,
             {
                 "stars": repo["stargazerCount"],
+                "desc": repo.get("description") or "",
                 "lang": (repo.get("primaryLanguage") or {}).get("name") or "-",
                 "merged": 0,
             },
@@ -186,7 +196,10 @@ def render(rows: list[dict], merged_total: int) -> str:
     ]
     for name in order:
         entry = projects[name]
-        row = f"| [`{name}`](https://github.com/{name}) | {compact(entry['stars'])} "
+        label = f"[`{name}`](https://github.com/{name})"
+        if entry["desc"]:
+            label += f"<br><sub>{clip(entry['desc'])}</sub>"
+        row = f"| {label} | {compact(entry['stars'])} "
         if show_lang:
             lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
             row += f"| {lang} "
