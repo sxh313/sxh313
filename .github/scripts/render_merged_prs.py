@@ -271,8 +271,9 @@ def replace(text: str, start_tag: str, end_tag: str, body: str) -> tuple[str, bo
     match = pattern.search(text)
     if not match:
         raise SystemExit(f"Marker {start_tag} not found")
-    # The footnote timestamp changes every run, so compare on the data alone.
-    if STAMP.sub("", match.group(1)).strip() == body.strip():
+    # The footnote timestamp changes every run, so compare both sides with it removed -
+    # otherwise every run looks like a change and pushes a commit that only moves the clock.
+    if STAMP.sub("", match.group(1)).strip() == STAMP.sub("", body).strip():
         return text, False
     start, stop = match.span()
     return f"{text[:start]}{start_tag}\n{body}\n{end_tag}{text[stop:]}", True
