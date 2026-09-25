@@ -19,7 +19,11 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
+      # Without `ref` the runner checks out the SHA that started the run, so a queued
+      # second run rebuilds from a stale README and its push is rejected.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Render the merged-PR block
         env:
