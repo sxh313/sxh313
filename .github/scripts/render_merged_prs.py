@@ -163,6 +163,19 @@ def compact(number: int) -> str:
     return f"{number / 1000:.1f}k" if number >= 1000 else str(number)
 
 
+def tenths(number: int) -> int:
+    """Star counts in units of 100 - the precision the page prints.
+
+    Rounding each cell on its own makes the column disagree with the badge over it, so every
+    star figure is cut at this granularity first and the badge is the sum of the cells.
+    """
+    return round(number / 100)
+
+
+def stars(count_tenths: int) -> str:
+    return f"{count_tenths / 10:.1f}k"
+
+
 def clip(text: str, limit: int = DESC_MAX) -> str:
     """One tidy table cell out of whatever the maintainer wrote in the repo description."""
     flat = " ".join(text.split()).replace("|", "\\|")
@@ -194,8 +207,9 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
         return "_Nothing merged upstream yet._"
 
     projects = aggregate(all_rows)
-    by_stars = lambda n: (-projects[n]["stars"], n)
-    total_stars = sum(entry["stars"] for entry in projects.values())
+    cells = {name: tenths(entry["stars"]) for name, entry in projects.items()}
+    by_stars = lambda n: (-cells[n], n)
+    total_star_cells = sum(cells.values())
 
     langs = {entry["lang"] for entry in projects.values()}
     # One language across every row is noise, so the column only appears once they differ.
@@ -205,7 +219,7 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
         '<p align="center">',
         "  " + metric("Merged PRs", str(merged_total), "8250DF", "git"),
         "  " + metric("Projects", str(len(projects)), "0969DA", "box"),
-        "  " + metric("Upstream stars", compact(total_stars), "BF8700", "github"),
+        "  " + metric("Upstream stars", stars(total_star_cells), "BF8700", "github"),
         "</p>",
         "",
         "| Project | ★ | Language | Merged |" if show_lang else "| Project | ★ | Merged |",
@@ -216,7 +230,7 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
         label = f"[`{name}`](https://github.com/{name})"
         if entry["desc"]:
             label += f"<br><sub>{clip(entry['desc'])}</sub>"
-        row = f"| {label} | {compact(entry['stars'])} "
+        row = f"| {label} | {stars(cells[name])} "
         if show_lang:
             lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
             row += f"| {lang} "
@@ -227,9 +241,9 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     listed = aggregate(featured_rows)
     hidden_projects = len(projects) - len(listed)
     if hidden_projects > 0:
-        rest_stars = sum(e["stars"] for n, e in projects.items() if n not in listed)
+        rest = total_star_cells - sum(cells[name] for name in listed)
         note = f"<sub>… and {hidden_projects} more</sub>"
-        row = f"| {note} | {compact(rest_stars)} "
+        row = f"| {note} | {stars(rest)} "
         row += "| — " if show_lang else ""
         out.append(row + f"| {merged_total - len(featured_rows)} |")
 
