@@ -1,0 +1,42 @@
+name: refresh contribution snake
+
+on:
+  schedule:
+    # The grid fills in once a day, so twice a day is enough to cover a skipped run.
+    - cron: "17 3,15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-snake
+
+jobs:
+  snake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render the grid
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            github-snake.svg?palette=github-light
+            github-snake-dark.svg?palette=github-dark
+
+      # The frames live on their own branch so main keeps no binary churn; the
+      # README reads them straight off raw.githubusercontent.com, which is the one
+      # host here that serves repo files reliably.
+      - name: Publish the frames
+        run: |
+          set -euo pipefail
+          git switch --orphan github-snake
+          git rm -rq --cached .
+          git add github-snake.svg github-snake-dark.svg
+          git diff --cached --quiet && { echo "frames unchanged"; exit 0; }
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -qm "refresh snake frames [skip ci]"
+          git push -fq origin github-snake

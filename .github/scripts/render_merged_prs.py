@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Rewrite the merged-PR block of the profile README.
+"""Rewrite the generated blocks of the profile README.
 
-One row per project that merged a pull request and has at least MIN_STARS (1,000) stars. The
-query selects no title, number or URL, so the page carries project-level counts only.
+Merged-PR block: one row per project that merged a pull request and has at least MIN_STARS
+(1,000) stars. The query selects no title, number or URL, so the page carries project-level
+counts only.
+
+Activity block: contribution, commit and repository totals for the trailing 12 months, read
+from the same graph the profile page draws.
 """
 
 from __future__ import annotations
@@ -14,12 +18,14 @@ import re
 import sys
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 API = "https://api.github.com/graphql"
 START = "<!-- merged-prs:start -->"
 END = "<!-- merged-prs:end -->"
+ACTIVITY_START = "<!-- activity:start -->"
+ACTIVITY_END = "<!-- activity:end -->"
 MAX_PAGES = 5
 MIN_STARS = 1000
 
@@ -33,6 +39,18 @@ query($search: String!, $cursor: String) {
         mergedAt
         baseRepository { nameWithOwner stargazerCount primaryLanguage { name } }
       }
+    }
+  }
+}
+"""
+
+ACTIVITY = """
+query($login: String!, $from: DateTime!, $to: DateTime!) {
+  user(login: $login) {
+    contributionsCollection(from: $from, to: $to) {
+      contributionCalendar { totalContributions }
+      totalCommitContributions
+      totalRepositoryContributions
     }
   }
 }
@@ -84,8 +102,8 @@ def pill(text: str) -> str:
 
 
 
-def gql(token: str, variables: dict) -> dict:
-    body = json.dumps({"query": PAGE, "variables": variables}).encode()
+def gql(token: str, query: str, variables: dict) -> dict:
+    body = json.dumps({"query": query, "variables": variables}).encode()
     request = urllib.request.Request(
         API,
         data=body,
@@ -100,14 +118,14 @@ def gql(token: str, variables: dict) -> dict:
         payload = json.load(response)
     if payload.get("errors"):
         raise SystemExit(f"GraphQL errors: {json.dumps(payload['errors'])}")
-    return payload["data"]["search"]
+    return payload["data"]
 
 
 def collect(token: str, query: str) -> tuple[list[dict], int]:
     """Return up to 500 {repo, mergedAt} records plus the server-side total count."""
     seen, rows, cursor, total = set(), [], None, 0
     for _ in range(MAX_PAGES):
-        result = gql(token, {"search": query, "cursor": cursor})
+        result = gql(token, PAGE, {"search": query, "cursor": cursor})["search"]
         total = result["issueCount"]
         for node in result["nodes"]:
             repo, stamp = node.get("baseRepository"), node.get("mergedAt")
@@ -178,6 +196,46 @@ def render(rows: list[dict], merged_total: int) -> str:
     return "\n".join(out)
 
 
+def render_activity(token: str, owner: str) -> str:
+    """The three totals GitHub's own contribution graph already publishes."""
+    now = datetime.now(timezone.utc)
+    collection = gql(
+        token,
+        ACTIVITY,
+        {
+            "login": owner,
+            "from": (now - timedelta(days=365)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "to": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        },
+    )["user"]["contributionsCollection"]
+
+    totals = [
+        ("Contributions", collection["contributionCalendar"]["totalContributions"], "F57D26", "github"),
+        ("Commits", collection["totalCommitContributions"], "2EA043", "git"),
+        ("Repositories touched", collection["totalRepositoryContributions"], "8250DF", "box"),
+    ]
+    out = [
+        "Rolling 12 months, counted by GitHub's own contribution graph.",
+        "",
+        '<p align="center">',
+    ]
+    out += [f"  {metric(label, compact(value), color, logo)}" for label, value, color, logo in totals]
+    return "\n".join(out + ["</p>"])
+
+
+def replace(text: str, start_tag: str, end_tag: str, body: str) -> tuple[str, bool]:
+    """Swap one marked region. Reports whether the rendered data actually moved."""
+    pattern = re.compile(re.escape(start_tag) + r"(.*?)" + re.escape(end_tag), re.S)
+    match = pattern.search(text)
+    if not match:
+        raise SystemExit(f"Marker {start_tag} not found")
+    # The footnote timestamp changes every run, so compare on the data alone.
+    if STAMP.sub("", match.group(1)).strip() == body.strip():
+        return text, False
+    start, stop = match.span()
+    return f"{text[:start]}{start_tag}\n{body}\n{end_tag}{text[stop:]}", True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--owner", default=os.environ.get("PROFILE_OWNER", "sxh313"))
@@ -190,10 +248,10 @@ def main() -> int:
     parser.add_argument("--input", type=Path, help="JSON [rows, total] instead of calling the API.")
     args = parser.parse_args()
 
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     if args.input:
         rows, merged_total = json.loads(args.input.read_text(encoding="utf-8"))
     else:
-        token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
         if not token:
             raise SystemExit("Set GH_TOKEN / GITHUB_TOKEN, or pass --input.")
         rows, merged_total = collect(token, f"author:{args.owner} is:pr is:merged")
@@ -201,32 +259,27 @@ def main() -> int:
     rows, hidden = star_floor(rows)
     merged_total -= hidden
 
-    body = render(rows, merged_total)
-
-    readme = args.readme
-    text = readme.read_text(encoding="utf-8")
-    pattern = re.compile(re.escape(START) + r"(.*?)" + re.escape(END), re.S)
-    match = pattern.search(text)
-    if not match:
-        raise SystemExit(f"Markers not found in {readme}")
-    # The footnote timestamp changes every run, so compare on the data alone.
-    if STAMP.sub("", match.group(1)).strip() == body.strip():
-        print(f"{readme} already up to date ({merged_total} merged)")
-        return 0
-
-    block = (
-        f"{body}\n\n<sub>Merges only, counted per project above the {MIN_STARS:,}-star floor. "
-        f"Checked automatically by "
+    body = render(rows, merged_total) + (
+        f"\n\n<sub>Merges only, counted per project above the {MIN_STARS:,}-star floor. "
+        "Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
     )
-    start, stop = match.span()
-    readme.write_text(
-        f"{text[:start]}{START}\n{block}\n{END}{text[stop:]}",
-        encoding="utf-8",
-        newline="\n",
-    )
-    print(f"{readme} refreshed ({merged_total} merged)")
+
+    readme = args.readme
+    text = readme.read_text(encoding="utf-8")
+    text, changed = replace(text, START, END, body)
+    if token:
+        text, activity_changed = replace(
+            text, ACTIVITY_START, ACTIVITY_END, render_activity(token, args.owner)
+        )
+        changed = changed or activity_changed
+
+    if changed:
+        readme.write_text(text, encoding="utf-8", newline="\n")
+        print(f"{readme} refreshed ({merged_total} merged)")
+    else:
+        print(f"{readme} already up to date ({merged_total} merged)")
     return 0
 
 
