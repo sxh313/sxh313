@@ -33,7 +33,7 @@ requests are not listed here.
 | [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:17 UTC.</sub>
+<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:18 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
