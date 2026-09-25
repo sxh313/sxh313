@@ -42,7 +42,7 @@ automatically. Individual pull requests are not listed here.
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp)<br><sub>Model Context Protocol Server for Mobile Automation and Scraping (iOS, Android, Emulators …</sub> | 6.9k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:13 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:14 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
