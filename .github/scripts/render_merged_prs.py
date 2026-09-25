@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Rewrite the generated blocks of the profile README.
 
-Merged-PR block: one row per project that merged a pull request and has at least MIN_STARS
-(1,000) stars, carrying that project's own repository description. The query selects no PR
-title, number or URL, so the page stays at project-level counts only.
+Merged-PR block: badges over every project that merged a pull request and has at least
+MIN_STARS (1,000) stars, then one row per FEATURED project carrying that project's own
+repository description, then an ellipsis row for the remainder so the visible counts still
+add up to the badges. The query selects no PR title, number or URL, so the page stays at
+project-level counts only.
 
 Activity block: contribution, commit and repository totals for the trailing 12 months, read
 from the same graph the profile page draws.
@@ -30,8 +32,9 @@ MAX_PAGES = 5
 MIN_STARS = 1000
 DESC_MAX = 90
 
-# The page shows these projects and nothing else. Names are matched exactly, so a
-# transfer or rename silently drops the row rather than showing the wrong project.
+# The only projects named on the page. Names are matched exactly, so a transfer or rename
+# silently drops the row rather than showing the wrong project; the merges it carried stay in
+# the totals and move to the ellipsis row.
 FEATURED = (
     "openclaw/openclaw",
     "bytedance/deer-flow",
@@ -168,10 +171,7 @@ def clip(text: str, limit: int = DESC_MAX) -> str:
     return flat[: limit + 1].rsplit(" ", 1)[0].rstrip(",;:") + " …"
 
 
-def render(rows: list[dict], merged_total: int) -> str:
-    if not rows:
-        return "_Nothing merged upstream yet._"
-
+def aggregate(rows: list[dict]) -> dict[str, dict]:
     projects: dict[str, dict] = {}
     for row in rows:
         repo = row["repo"]
@@ -186,8 +186,15 @@ def render(rows: list[dict], merged_total: int) -> str:
             },
         )
         entry["merged"] += 1
+    return projects
 
-    order = sorted(projects, key=lambda n: (-projects[n]["stars"], n))
+
+def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -> str:
+    if not all_rows:
+        return "_Nothing merged upstream yet._"
+
+    projects = aggregate(all_rows)
+    by_stars = lambda n: (-projects[n]["stars"], n)
     total_stars = sum(entry["stars"] for entry in projects.values())
 
     langs = {entry["lang"] for entry in projects.values()}
@@ -204,7 +211,7 @@ def render(rows: list[dict], merged_total: int) -> str:
         "| Project | ★ | Language | Merged |" if show_lang else "| Project | ★ | Merged |",
         "| :-- | --: | :-- | --: |" if show_lang else "| :-- | --: | --: |",
     ]
-    for name in order:
+    for name in sorted(aggregate(featured_rows), key=by_stars):
         entry = projects[name]
         label = f"[`{name}`](https://github.com/{name})"
         if entry["desc"]:
@@ -214,8 +221,20 @@ def render(rows: list[dict], merged_total: int) -> str:
             lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
             row += f"| {lang} "
         out.append(row + f"| {entry['merged']} |")
-    if len(rows) < merged_total:
-        out += ["", f"<sub>Per-project counts cover the {len(rows)} most recent merges.</sub>"]
+
+    # The listed rows are a shortlist, so the remainder gets its own row: every column then
+    # adds up to the badge above it, and nothing on the page over-claims.
+    listed = aggregate(featured_rows)
+    hidden_projects = len(projects) - len(listed)
+    if hidden_projects > 0:
+        rest_stars = sum(e["stars"] for n, e in projects.items() if n not in listed)
+        note = f"<sub>… and {hidden_projects} more</sub>"
+        row = f"| {note} | {compact(rest_stars)} "
+        row += "| — " if show_lang else ""
+        out.append(row + f"| {merged_total - len(featured_rows)} |")
+
+    if len(all_rows) < merged_total:
+        out += ["", f"<sub>Per-project counts cover the {len(all_rows)} most recent merges.</sub>"]
     return "\n".join(out)
 
 
@@ -282,13 +301,11 @@ def main() -> int:
     rows, hidden = star_floor(rows)
     merged_total -= hidden
 
-    keep = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
-    merged_total -= len(rows) - len(keep)
-    rows = keep
+    featured = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
 
-    body = render(rows, merged_total) + (
-        f"\n\n<sub>Merges only, counted in the {len(FEATURED)} projects listed above - "
-        "a hand-picked set, so the totals are lower than everything merged. "
+    body = render(rows, featured, merged_total) + (
+        f"\n\n<sub>Merges only, counted across every project with {compact(MIN_STARS)}+ stars. "
+        "The table names the five above; the last row carries the rest. "
         "Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
