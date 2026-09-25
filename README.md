@@ -5,16 +5,18 @@
   which is GitHub's floor for scheduled runs, but delivery is not guaranteed: measured
   2026-09-23/24 the runs actually landed 136-342 minutes apart. Run the workflow manually
   when the page has to catch up sooner.
-  The generated block names projects that merged a pull request and have 1,000+ stars,
-  as name + count.
+  The generated block lists the five projects in FEATURED inside
+  .github/scripts/render_merged_prs.py, with their own repository description and a
+  merge count. Everything the page shows is recomputed from those five, so the
+  headline totals sit below the real merge count by design.
   The snake at the bottom is rendered by .github/workflows/snake.yml into the
   github-snake branch, so it is animation frames, not a hand-written asset.
 -->
 
 ## Open source
 
-Projects with 1,000+ stars that have merged my pull requests upstream, refreshed
-automatically. Individual pull requests are not listed here.
+Five projects that have merged my pull requests, refreshed automatically. Individual pull
+requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
@@ -31,7 +33,7 @@ automatically. Individual pull requests are not listed here.
 | [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:16 UTC.</sub>
+<sub>Merges only, counted in the 5 projects listed above - a hand-picked set, so the totals are lower than everything merged. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 15:17 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
