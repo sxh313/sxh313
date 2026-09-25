@@ -25,29 +25,29 @@ automatically. Individual pull requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Merged%20PRs-34-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="34 merged prs" />
+  <img src="https://img.shields.io/badge/Merged%20PRs-35-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="35 merged prs" />
   <img src="https://img.shields.io/badge/Projects-16-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="16 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-872.3k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.3k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-872.6k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.6k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
 | :-- | --: | :-- | --: |
 | [`openclaw/openclaw`](https://github.com/openclaw/openclaw) | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`headroomlabs-ai/headroom`](https://github.com/headroomlabs-ai/headroom) | 73.7k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| [`diegosouzapw/OmniRoute`](https://github.com/diegosouzapw/OmniRoute) | 70.0k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| [`headroomlabs-ai/headroom`](https://github.com/headroomlabs-ai/headroom) | 73.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
+| [`diegosouzapw/OmniRoute`](https://github.com/diegosouzapw/OmniRoute) | 70.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) | 59.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
-| [`TriliumNext/Trilium`](https://github.com/TriliumNext/Trilium) | 38.0k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| [`TriliumNext/Trilium`](https://github.com/TriliumNext/Trilium) | 38.0k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 2 |
 | [`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope) | 32.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
 | [`oraios/serena`](https://github.com/oraios/serena) | 29.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code) | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| [`livekit/agents`](https://github.com/livekit/agents) | 14.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`livekit/agents`](https://github.com/livekit/agents) | 14.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) | 13.8k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) | 12.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 2 |
-| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 8.3k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
+| [`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) | 8.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`CursorTouch/Windows-MCP`](https://github.com/CursorTouch/Windows-MCP) | 7.2k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 1 |
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.9k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 06:41 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 12:15 UTC.</sub>
 <!-- merged-prs:end -->
