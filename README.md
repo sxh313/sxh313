@@ -20,7 +20,7 @@ automatically. Individual pull requests are not listed here.
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-35-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="35 merged prs" />
   <img src="https://img.shields.io/badge/Projects-16-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="16 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-872.7k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.7k upstream stars" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-872.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="872.8k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
@@ -42,7 +42,7 @@ automatically. Individual pull requests are not listed here.
 | [`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) | 6.9k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
 | [`TencentCloud/Octop`](https://github.com/TencentCloud/Octop) | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
 
-<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 13:31 UTC.</sub>
+<sub>Merges only, counted per project above the 1,000-star floor. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 14:57 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
@@ -52,7 +52,7 @@ Rolling 12 months, counted by GitHub's own contribution graph.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Contributions-6.7k-F57D26?style=for-the-badge&logo=github&logoColor=white" alt="6.7k contributions" />
-  <img src="https://img.shields.io/badge/Commits-6.3k-2EA043?style=for-the-badge&logo=git&logoColor=white" alt="6.3k commits" />
+  <img src="https://img.shields.io/badge/Commits-6.4k-2EA043?style=for-the-badge&logo=git&logoColor=white" alt="6.4k commits" />
   <img src="https://img.shields.io/badge/Repositories%20touched-54-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="54 repositories touched" />
 </p>
 <!-- activity:end -->
