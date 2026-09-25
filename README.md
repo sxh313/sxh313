@@ -8,35 +8,36 @@
   The generated block's badges cover every project with 1,000+ stars that has merged a pull
   request. The table names only the five in FEATURED inside
   .github/scripts/render_merged_prs.py, with their own repository description and a merge
-  count, and its last row carries the remainder - so the visible rows always add up to the
-  badges instead of reading as the whole set.
+  count. The remainder sits in a <details> under the table, whose summary line carries its
+  star and merge totals - so the page always adds up to the badges instead of reading as the
+  whole set, without listing all seventeen projects.
   The snake at the bottom is rendered by .github/workflows/snake.yml into the
   github-snake branch, so it is animation frames, not a hand-written asset.
 -->
 
-## Open source
+## Open source contributions
 
 Projects that have merged my pull requests, refreshed automatically. The badges count every
-one of them; the table names five, with the rest on the last row. Individual pull
+one of them; the table names five, with the rest one click below. Individual pull
 requests are not listed here.
 
 <!-- merged-prs:start -->
 <p align="center">
   <img src="https://img.shields.io/badge/Merged%20PRs-36-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="36 merged prs" />
-  <img src="https://img.shields.io/badge/Projects-17-0969DA?style=for-the-badge&logo=box&logoColor=white" alt="17 projects" />
-  <img src="https://img.shields.io/badge/Upstream%20stars-874.8k-BF8700?style=for-the-badge&logo=github&logoColor=white" alt="874.8k upstream stars" />
+  <img src="https://img.shields.io/badge/Projects-17-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="17 projects" />
+  <img src="https://img.shields.io/badge/Upstream%20stars-874.9k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="874.9k upstream stars" />
 </p>
 
 | Project | ★ | Language | Merged |
 | :-- | --: | :-- | --: |
-| <img src="https://github.com/openclaw.png?size=32" width="16" height="16" alt="" />&nbsp;[`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</sub> | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| <img src="https://github.com/bytedance.png?size=32" width="16" height="16" alt="" />&nbsp;[`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>An open-source long-horizon SuperAgent harness that researches, codes, and creates. With …</sub> | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
-| <img src="https://github.com/agentscope-ai.png?size=32" width="16" height="16" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
-| <img src="https://github.com/QwenLM.png?size=32" width="16" height="16" alt="" />&nbsp;[`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
-| <img src="https://github.com/TencentCloud.png?size=32" width="16" height="16" alt="" />&nbsp;[`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
-| <sub>… and 12 more</sub> | 335.9k | — | 16 |
+| <img src="https://github.com/openclaw.png?size=48" width="24" height="24" alt="" />&nbsp;[`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</sub> | 390.5k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| <img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="" />&nbsp;[`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>An open-source long-horizon SuperAgent harness that researches, codes, and creates. With …</sub> | 83.0k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 3 |
+| <img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>Build and run agents you can see, understand and trust.</sub> | 32.4k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 5 |
+| <img src="https://github.com/QwenLM.png?size=48" width="24" height="24" alt="" />&nbsp;[`QwenLM/qwen-code`](https://github.com/QwenLM/qwen-code)<br><sub>An open-source AI coding agent that lives in your terminal.</sub> | 28.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 1 |
+| <img src="https://github.com/TencentCloud.png?size=48" width="24" height="24" alt="" />&nbsp;[`TencentCloud/Octop`](https://github.com/TencentCloud/Octop)<br><sub>A smarter, self-hosted AI assistant — multi-user, multi-agent.</sub> | 4.9k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 10 |
+| <details><summary><sub>… and 12 more</sub></summary><br><img src="https://github.com/headroomlabs-ai.png?size=48" width="24" height="24" alt="" />&nbsp;[`headroomlabs-ai/headroom`](https://github.com/headroomlabs-ai/headroom) &middot; 73.8k &middot; 3<br><img src="https://github.com/diegosouzapw.png?size=48" width="24" height="24" alt="" />&nbsp;[`diegosouzapw/OmniRoute`](https://github.com/diegosouzapw/OmniRoute) &middot; 70.2k &middot; 1<br><img src="https://github.com/MemPalace.png?size=48" width="24" height="24" alt="" />&nbsp;[`MemPalace/mempalace`](https://github.com/MemPalace/mempalace) &middot; 59.3k &middot; 1<br><img src="https://github.com/TriliumNext.png?size=48" width="24" height="24" alt="" />&nbsp;[`TriliumNext/Trilium`](https://github.com/TriliumNext/Trilium) &middot; 38.0k &middot; 2<br><img src="https://github.com/oraios.png?size=48" width="24" height="24" alt="" />&nbsp;[`oraios/serena`](https://github.com/oraios/serena) &middot; 29.8k &middot; 1<br><img src="https://github.com/livekit.png?size=48" width="24" height="24" alt="" />&nbsp;[`livekit/agents`](https://github.com/livekit/agents) &middot; 14.4k &middot; 1<br><img src="https://github.com/microsoft.png?size=48" width="24" height="24" alt="" />&nbsp;[`microsoft/agent-framework`](https://github.com/microsoft/agent-framework) &middot; 13.8k &middot; 1<br><img src="https://github.com/mrexodia.png?size=48" width="24" height="24" alt="" />&nbsp;[`mrexodia/ida-pro-mcp`](https://github.com/mrexodia/ida-pro-mcp) &middot; 12.3k &middot; 2<br><img src="https://github.com/strands-agents.png?size=48" width="24" height="24" alt="" />&nbsp;[`strands-agents/harness-sdk`](https://github.com/strands-agents/harness-sdk) &middot; 8.4k &middot; 1<br><img src="https://github.com/CursorTouch.png?size=48" width="24" height="24" alt="" />&nbsp;[`CursorTouch/Windows-MCP`](https://github.com/CursorTouch/Windows-MCP) &middot; 7.2k &middot; 1<br><img src="https://github.com/mobile-next.png?size=48" width="24" height="24" alt="" />&nbsp;[`mobile-next/mobile-mcp`](https://github.com/mobile-next/mobile-mcp) &middot; 7.0k &middot; 1<br><img src="https://github.com/timescale.png?size=48" width="24" height="24" alt="" />&nbsp;[`timescale/pg-aiguide`](https://github.com/timescale/pg-aiguide) &middot; 1.8k &middot; 1</details> | 336.0k | — | 16 |
 
-<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the last row carries the rest. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 19:00 UTC.</sub>
+<sub>Merges only, counted across every project with 1,000+ stars. The table names the five above; the rest expand from the line below. Checked automatically by [.github/workflows/refresh.yml](.github/workflows/refresh.yml); last change 2026-09-25 19:29 UTC.</sub>
 <!-- merged-prs:end -->
 
 ## Contribution graph
@@ -45,8 +46,8 @@ requests are not listed here.
 Rolling 12 months, counted by GitHub's own contribution graph.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Contributions-6.7k-F57D26?style=for-the-badge&logo=github&logoColor=white" alt="6.7k contributions" />
-  <img src="https://img.shields.io/badge/Commits-6.4k-2EA043?style=for-the-badge&logo=git&logoColor=white" alt="6.4k commits" />
+  <img src="https://img.shields.io/badge/Contributions-6.7k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="6.7k contributions" />
+  <img src="https://img.shields.io/badge/Commits-6.4k-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="6.4k commits" />
   <img src="https://img.shields.io/badge/Repositories%20touched-54-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="54 repositories touched" />
 </p>
 <!-- activity:end -->

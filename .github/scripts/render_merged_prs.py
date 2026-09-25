@@ -7,7 +7,7 @@ repository description, then an ellipsis row for the remainder so the visible co
 add up to the badges. The query selects no PR title, number or URL, so the page stays at
 project-level counts only.
 
-Activity block: contribution, commit and repository totals for the trailing 12 months, read
+Activity block: contribution, commit and repository totals for the trailing ACTIVITY_DAYS, read
 from the same graph the profile page draws.
 """
 
@@ -31,6 +31,8 @@ ACTIVITY_END = "<!-- activity:end -->"
 MAX_PAGES = 5
 MIN_STARS = 1000
 DESC_MAX = 90
+# Contribution window in days. The prose derives from this number, so the two cannot drift apart.
+ACTIVITY_DAYS = 90
 
 # The only projects named on the page. Names are matched exactly, so a transfer or rename
 # silently drops the row rather than showing the wrong project; the merges it carried stay in
@@ -70,9 +72,12 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
 }
 """
 
-STAMP = re.compile(r"\n*<sub>.*</sub>\s*\Z")
+STAMP = re.compile(r"; last change \d{4}-\d\d-\d\d \d\d:\d\d UTC")
 
 SHIELDS = "https://img.shields.io/badge/"
+# One colour for all three headline totals. Purple, GitHub's own accent: three different colours
+# turned the totals row into a traffic light that competed with the language pills underneath it.
+ACCENT = "8250DF"
 LANG_STYLE = {
     "Python": ("3776AB", "python", "white"),
     "Rust": ("000000", "rust", "white"),
@@ -202,6 +207,14 @@ def aggregate(rows: list[dict]) -> dict[str, dict]:
     return projects
 
 
+def avatar(name: str) -> str:
+    """The project's own mark, served by GitHub's avatar CDN. Requested at 48px so the 24px
+    figure stays crisp on a retina screen; the non-breaking space keeps icon and name together
+    when the cell wraps."""
+    owner = name.split("/", 1)[0]
+    return f'<img src="https://github.com/{owner}.png?size=48" width="24" height="24" alt="" />&nbsp;'
+
+
 def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -> str:
     if not all_rows:
         return "_Nothing merged upstream yet._"
@@ -215,21 +228,20 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     # One language across every row is noise, so the column only appears once they differ.
     show_lang = len(langs) > 1
 
+    head = ["| Project | ★ | Language | Merged |", "| :-- | --: | :-- | --: |"] if show_lang else [
+        "| Project | ★ | Merged |", "| :-- | --: | --: |"
+    ]
     out = [
         '<p align="center">',
-        "  " + metric("Merged PRs", str(merged_total), "8250DF", "git"),
-        "  " + metric("Projects", str(len(projects)), "0969DA", "box"),
-        "  " + metric("Upstream stars", stars(total_star_cells), "BF8700", "github"),
+        "  " + metric("Merged PRs", str(merged_total), ACCENT, "git"),
+        "  " + metric("Projects", str(len(projects)), ACCENT, "box"),
+        "  " + metric("Upstream stars", stars(total_star_cells), ACCENT, "github"),
         "</p>",
         "",
-        "| Project | ★ | Language | Merged |" if show_lang else "| Project | ★ | Merged |",
-        "| :-- | --: | :-- | --: |" if show_lang else "| :-- | --: | --: |",
-    ]
+    ] + head
     for name in sorted(aggregate(featured_rows), key=by_stars):
         entry = projects[name]
-        owner = name.split("/", 1)[0]
-        icon = f'<img src="https://github.com/{owner}.png?size=32" width="16" height="16" alt="" />&nbsp;'
-        label = f"{icon}[`{name}`](https://github.com/{name})"
+        label = f"{avatar(name)}[`{name}`](https://github.com/{name})"
         if entry["desc"]:
             label += f"<br><sub>{clip(entry['desc'])}</sub>"
         row = f"| {label} | {stars(cells[name])} "
@@ -238,13 +250,21 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
             row += f"| {lang} "
         out.append(row + f"| {entry['merged']} |")
 
-    # The listed rows are a shortlist, so the remainder gets its own row: every column then
-    # adds up to the badge above it, and nothing on the page over-claims.
+    # The five rows above are a shortlist. GitHub strips style attributes, so no row can be hidden
+    # on its own and <details> cannot wrap a <tr> - but it does survive inside a cell, measured on
+    # the rendered page. Keeping the tail in that row's first cell means one table with one set of
+    # column widths, and the row still carries the remainder's totals, so the page adds up to the
+    # badges without anyone having to click.
     listed = aggregate(featured_rows)
-    hidden_projects = len(projects) - len(listed)
-    if hidden_projects > 0:
+    hidden = {name: projects[name] for name in projects if name not in listed}
+    if hidden:
         rest = total_star_cells - sum(cells[name] for name in listed)
-        note = f"<sub>… and {hidden_projects} more</sub>"
+        items = "".join(
+            f"<br>{avatar(name)}[`{name}`](https://github.com/{name})"
+            f" &middot; {stars(cells[name])} &middot; {hidden[name]['merged']}"
+            for name in sorted(hidden, key=by_stars)
+        )
+        note = f"<details><summary><sub>… and {len(hidden)} more</sub></summary>{items}</details>"
         row = f"| {note} | {stars(rest)} "
         row += "| — " if show_lang else ""
         out.append(row + f"| {merged_total - len(featured_rows)} |")
@@ -262,18 +282,20 @@ def render_activity(token: str, owner: str) -> str:
         ACTIVITY,
         {
             "login": owner,
-            "from": (now - timedelta(days=365)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "from": (now - timedelta(days=ACTIVITY_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "to": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
     )["user"]["contributionsCollection"]
 
     totals = [
-        ("Contributions", collection["contributionCalendar"]["totalContributions"], "F57D26", "github"),
-        ("Commits", collection["totalCommitContributions"], "2EA043", "git"),
-        ("Repositories touched", collection["totalRepositoryContributions"], "8250DF", "box"),
+        ("Contributions", collection["contributionCalendar"]["totalContributions"], ACCENT, "github"),
+        ("Commits", collection["totalCommitContributions"], ACCENT, "git"),
+        ("Repositories touched", collection["totalRepositoryContributions"], ACCENT, "box"),
     ]
+    months = ACTIVITY_DAYS // 30
     out = [
-        "Rolling 12 months, counted by GitHub's own contribution graph.",
+        f"Rolling {months} month{'s' if months != 1 else ''}, "
+        "counted by GitHub's own contribution graph.",
         "",
         '<p align="center">',
     ]
@@ -289,6 +311,8 @@ def replace(text: str, start_tag: str, end_tag: str, body: str) -> tuple[str, bo
         raise SystemExit(f"Marker {start_tag} not found")
     # The footnote timestamp changes every run, so compare both sides with it removed -
     # otherwise every run looks like a change and pushes a commit that only moves the clock.
+    # It has to be the clock alone: an earlier pattern dropped the whole footnote, which made a
+    # real wording change invisible and left it uncommitted.
     if STAMP.sub("", match.group(1)).strip() == STAMP.sub("", body).strip():
         return text, False
     start, stop = match.span()
@@ -322,7 +346,7 @@ def main() -> int:
 
     body = render(rows, featured, merged_total) + (
         f"\n\n<sub>Merges only, counted across every project with {MIN_STARS:,}+ stars. "
-        "The table names the five above; the last row carries the rest. "
+        "The table names the five above; the rest expand from the line below. "
         "Checked automatically by "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
