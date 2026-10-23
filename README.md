@@ -48,7 +48,7 @@ Rolling 3 months, counted by GitHub's own contribution graph.
 <p align="center">
   <img src="https://img.shields.io/badge/Contributions-9.7k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="9.7k contributions" />
   <img src="https://img.shields.io/badge/Commits-9.2k-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="9.2k commits" />
-  <img src="https://img.shields.io/badge/Repositories%20touched-56-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="56 repositories touched" />
+  <img src="https://img.shields.io/badge/Repositories%20touched-55-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="55 repositories touched" />
 </p>
 <!-- activity:end -->
 
