@@ -45,6 +45,15 @@ FEATURED = (
     "TencentCloud/Octop",
 )
 
+# 首页展示中文简介，避免上游仓库的英文描述破坏中文阅读体验。
+FEATURED_ZH = {
+    "openclaw/openclaw": "可以在任意操作系统和平台上执行真实任务的开源 AI 助手。",
+    "bytedance/deer-flow": "面向深度研究、代码生成与内容创作的长程智能体框架。",
+    "agentscope-ai/agentscope": "用于构建、运行与观测可信智能体的开发框架。",
+    "QwenLM/qwen-code": "运行在终端中的开源 AI 编程智能体。",
+    "TencentCloud/Octop": "支持多用户、多智能体协作的自托管 AI 助手。",
+}
+
 PAGE = """
 query($search: String!, $cursor: String) {
   search(query: $search, type: ISSUE, first: 100, after: $cursor) {
@@ -72,7 +81,7 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
 }
 """
 
-STAMP = re.compile(r"; last change \d{4}-\d\d-\d\d \d\d:\d\d UTC")
+STAMP = re.compile(r"(?:; last change|；最后更新于) \d{4}-\d\d-\d\d \d\d:\d\d UTC")
 
 SHIELDS = "https://img.shields.io/badge/"
 # One colour for all three headline totals. Purple, GitHub's own accent: three different colours
@@ -217,7 +226,7 @@ def avatar(name: str) -> str:
 
 def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -> str:
     if not all_rows:
-        return "_Nothing merged upstream yet._"
+        return "_暂时还没有符合展示条件的上游合并记录。_"
 
     projects = aggregate(all_rows)
     cells = {name: tenths(entry["stars"]) for name, entry in projects.items()}
@@ -228,22 +237,23 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
     # One language across every row is noise, so the column only appears once they differ.
     show_lang = len(langs) > 1
 
-    head = ["| Project | ★ | Language | Merged |", "| :-- | --: | :-- | --: |"] if show_lang else [
-        "| Project | ★ | Merged |", "| :-- | --: | --: |"
+    head = ["| 贡献项目 | ★ | 主要语言 | 已合并 |", "| :-- | --: | :-- | --: |"] if show_lang else [
+        "| 贡献项目 | ★ | 已合并 |", "| :-- | --: | --: |"
     ]
     out = [
         '<p align="center">',
-        "  " + metric("Merged PRs", str(merged_total), ACCENT, "git"),
-        "  " + metric("Projects", str(len(projects)), ACCENT, "box"),
-        "  " + metric("Upstream stars", stars(total_star_cells), ACCENT, "github"),
+        "  " + metric("已合并 PR", str(merged_total), ACCENT, "git"),
+        "  " + metric("贡献项目", str(len(projects)), ACCENT, "box"),
+        "  " + metric("上游项目 Stars", stars(total_star_cells), ACCENT, "github"),
         "</p>",
         "",
     ] + head
     for name in sorted(aggregate(featured_rows), key=by_stars):
         entry = projects[name]
         label = f"{avatar(name)}[`{name}`](https://github.com/{name})"
-        if entry["desc"]:
-            label += f"<br><sub>{clip(entry['desc'])}</sub>"
+        description = FEATURED_ZH.get(name) or entry["desc"]
+        if description:
+            label += f"<br><sub>{clip(description)}</sub>"
         row = f"| {label} | {stars(cells[name])} "
         if show_lang:
             lang = pill(entry["lang"]) if entry["lang"] != "-" else "—"
@@ -264,13 +274,13 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
             f" &middot; {stars(cells[name])} &middot; {hidden[name]['merged']}"
             for name in sorted(hidden, key=by_stars)
         )
-        note = f"<details><summary><sub>… and {len(hidden)} more</sub></summary>{items}</details>"
+        note = f"<details><summary><sub>展开其余 {len(hidden)} 个项目</sub></summary>{items}</details>"
         row = f"| {note} | {stars(rest)} "
         row += "| — " if show_lang else ""
         out.append(row + f"| {merged_total - len(featured_rows)} |")
 
     if len(all_rows) < merged_total:
-        out += ["", f"<sub>Per-project counts cover the {len(all_rows)} most recent merges.</sub>"]
+        out += ["", f"<sub>各项目统计基于最近 {len(all_rows)} 条合并记录。</sub>"]
     return "\n".join(out)
 
 
@@ -288,14 +298,13 @@ def render_activity(token: str, owner: str) -> str:
     )["user"]["contributionsCollection"]
 
     totals = [
-        ("Contributions", collection["contributionCalendar"]["totalContributions"], ACCENT, "github"),
-        ("Commits", collection["totalCommitContributions"], ACCENT, "git"),
-        ("Repositories touched", collection["totalRepositoryContributions"], ACCENT, "box"),
+        ("贡献数", collection["contributionCalendar"]["totalContributions"], ACCENT, "github"),
+        ("提交数", collection["totalCommitContributions"], ACCENT, "git"),
+        ("涉及仓库", collection["totalRepositoryContributions"], ACCENT, "box"),
     ]
     months = ACTIVITY_DAYS // 30
     out = [
-        f"Rolling {months} month{'s' if months != 1 else ''}, "
-        "counted by GitHub's own contribution graph.",
+        f"最近 {months} 个月，数据来自 GitHub 贡献图。",
         "",
         '<p align="center">',
     ]
@@ -345,11 +354,11 @@ def main() -> int:
     featured = [row for row in rows if row["repo"]["nameWithOwner"] in FEATURED]
 
     body = render(rows, featured, merged_total) + (
-        f"\n\n<sub>Merges only, counted across every project with {MIN_STARS:,}+ stars. "
-        "The table names the five above; the rest expand from the line below. "
-        "Checked automatically by "
+        f"\n\n<sub>仅统计 Stars 不低于 {MIN_STARS:,} 的项目及其中已合并的 PR。"
+        "表格展示 5 个代表项目，其余项目可在最后一行展开。"
+        "数据由 "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
-        f"; last change {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}.</sub>"
+        f" 自动更新；最后更新于 {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}。</sub>"
     )
 
     readme = args.readme
