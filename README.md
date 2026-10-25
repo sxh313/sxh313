@@ -97,7 +97,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E6%95%B0-9.7k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="9.7k 贡献数" />
   <img src="https://img.shields.io/badge/%E6%8F%90%E4%BA%A4%E6%95%B0-9.2k-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="9.2k 提交数" />
-  <img src="https://img.shields.io/badge/%E6%B6%89%E5%8F%8A%E4%BB%93%E5%BA%93-57-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="57 涉及仓库" />
+  <img src="https://img.shields.io/badge/%E6%B6%89%E5%8F%8A%E4%BB%93%E5%BA%93-58-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="58 涉及仓库" />
 </p>
 <!-- activity:end -->
 
