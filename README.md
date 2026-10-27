@@ -56,8 +56,10 @@
 
 > 所有主要学习正文都部署在自己的 GitHub Pages 站内，可以直接在线阅读；手机端也按单列阅读和无横向滚动进行了适配。
 
-> 🛤️ **配套成长路线：前端 → 全栈 → Agent**  
-> 面向刚完成 Vibe Coding、希望进一步读懂和改造真实项目的学习者，依次补齐 TypeScript、React / Next.js、Node.js、PostgreSQL、Python / FastAPI 与 Agent 工程，并为每一阶段设置练习和完成标准。  
+> 🛤️ **配套成长路线：前端 → 全栈 → Agent**
+>
+> 面向刚完成 Vibe Coding、希望进一步读懂和改造真实项目的学习者，依次补齐 TypeScript、React / Next.js、Node.js、PostgreSQL、Python / FastAPI 与 Agent 工程，并为每一阶段设置练习和完成标准。
+>
 > [查看完整飞书学习路线 →](https://bcnbltoq3sjn.feishu.cn/docx/EpEPd9agzoh0tpxdp4mc7cmMnfe)
 
 ## 🧠 我关注的 Agent 工程问题
