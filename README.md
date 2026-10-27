@@ -8,63 +8,59 @@
 
 # 你好，我是 sxh313 👋
 
-### AI 全栈 · AI Agent · 开源贡献
+### AI Agent 工程 · AI 全栈 · 开源贡献
 
 <p>
-  用工程化方式持续学习，也把学习过程沉淀成可以检索、复习和复用的内容。
+  关注 Agent Runtime、工具调用、上下文与记忆、评估及生产化落地。<br/>
+  我把学习、实践和开源协作沉淀成一套可以在线阅读、持续复习的中文知识库。
 </p>
 
 <p>
-  <a href="https://sxh313.github.io/engineering-map/"><b>📚 在线学习地图</b></a>
+  <a href="https://sxh313.github.io/engineering-map/ai/"><b>🤖 AI Agent 学习中心</b></a>
   ·
-  <a href="https://github.com/sxh313?tab=repositories"><b>🧩 我的项目</b></a>
+  <a href="https://sxh313.github.io/engineering-map/ai/handbook"><b>📖 融合学习手册</b></a>
   ·
   <a href="#-开源贡献"><b>🌍 开源贡献</b></a>
+  ·
+  <a href="https://github.com/sxh313?tab=repositories"><b>🧩 项目仓库</b></a>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/Go-后端工程-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go 后端工程" />
-  <img src="https://img.shields.io/badge/Python-AI%20Agent-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python AI Agent" />
-  <img src="https://img.shields.io/badge/TypeScript-工程实践-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript 工程实践" />
+  <img src="https://img.shields.io/badge/AI_Agent-Runtime_%26_Tool_Calling-8250DF?style=flat-square" alt="AI Agent Runtime 与工具调用" />
+  <img src="https://img.shields.io/badge/Python-Agent_Engineering-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Agent Engineering" />
+  <img src="https://img.shields.io/badge/Go-Backend_Foundation-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go Backend Foundation" />
 </p>
 
 </div>
 
-## 👋 关于我
+## 🤖 AI Agent 学习与实践
 
-- 目前专注于 **Go 后端、AI Agent 与智能体工程化**。
-- 正在系统整理 **Gin、GORM、MySQL、Redis、gRPC** 等后端知识。
-- 喜欢把零散知识整理成结构化学习路径，并用真实项目和开源协作检验理解。
-- 持续参与开源项目：从阅读源码、定位问题，到提交可验证的改动。
+我正在沿着一条完整的工程链路学习 Agent：不只关注 Prompt 和框架调用，也关注一个 Agent 怎样获得上下文、执行工具、保存状态、定位失败，并在评估之后持续改进。
 
-## 🧭 学习地图
+```text
+用户目标 → 上下文构建 → 推理与规划 → 工具执行 → 环境反馈
+   ↑                                               ↓
+   └──────── 记忆 / 状态 / 评估 / 持续改进 ────────┘
+```
 
-我把后端八股、源码笔记和 AI 学习内容整理成了在线知识库。它不是简单的文章目录，而是一条可以持续补充和反复复习的学习路线。
+| 从这里开始 | 适合什么时候看 | 站内入口 |
+| :-- | :-- | :-- |
+| **AI Agent 综合路线** | 第一次进入，先了解完整学习结构 | [进入学习中心 →](https://sxh313.github.io/engineering-map/ai/) |
+| **10 阶段融合手册** | 系统学习原理、工程控制点与面试表达 | [开始系统学习 →](https://sxh313.github.io/engineering-map/ai/handbook) |
+| **全部内容目录** | 查找 AI Agent Book 与 zero2Agent 的完整站内内容 | [查看完整目录 →](https://sxh313.github.io/engineering-map/ai/atlas) |
+| **实践学习契约** | 从“看懂”走向“做出、验证、复盘” | [进入实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) |
+| **Agent 面试专题** | 按工具、RAG、Runtime 等主题集中复习 | [进入面试复习 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/) |
 
-<p align="center">
-  <a href="https://sxh313.github.io/engineering-map/">
-    <img src="https://img.shields.io/badge/打开在线学习地图-开始学习-8250DF?style=for-the-badge&logo=readthedocs&logoColor=white" alt="打开在线学习地图" />
-  </a>
-</p>
+> 所有主要学习正文都部署在自己的 GitHub Pages 站内，可以直接在线阅读；手机端也按单列阅读和无横向滚动进行了适配。
 
-| 学习方向 | 当前内容 |
-| :-- | :-- |
-| Go Web | Gin、GORM、gRPC |
-| 数据与缓存 | MySQL、Redis |
-| AI Agent | Agent 架构、工具调用、记忆与工程实践 |
-| 面试复习 | 高频知识点、问题清单与阶段性复盘 |
+## 🧠 我关注的 Agent 工程问题
 
-> 学习地图会持续更新。目标不是“收藏更多资料”，而是让每一块知识都能被理解、复述和应用。
-
-## 🔧 技术关注
-
-<p>
-  <img src="https://skillicons.dev/icons?i=go,python,ts,mysql,redis,docker,git,github&theme=dark" alt="Go、Python、TypeScript、MySQL、Redis、Docker、Git 与 GitHub" />
-</p>
-
-- **后端工程：** API 设计、数据访问、缓存、RPC、性能与可观测性
-- **智能体开发：** 工具调用、上下文管理、记忆、评测与工作流编排
-- **工程实践：** 自动化、测试、文档、代码审查与开源协作
+- **Agent Loop 与 Runtime：** 状态流转、任务生命周期、中断恢复、并行执行与可观测性。
+- **Tool / MCP / Skill：** 工具描述、参数校验、权限边界、错误恢复与协议协作。
+- **Context / Memory / RAG：** 上下文选择、压缩、检索、长期记忆及知识更新。
+- **Coding Agent：** 文件、终端、代码搜索、沙箱、会话记录与人机协作。
+- **Eval 与生产化：** Trace、数据集、失败分类、回归评估、成本和延迟控制。
+- **Multi-Agent：** 任务拆分、角色边界、共享状态、交接协议与结果验收。
 
 ## 🌍 开源贡献
 
@@ -88,6 +84,30 @@
 
 <sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格展示 5 个代表项目，其余项目可在最后一行展开。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-10-27 07:52 UTC。</sub>
 <!-- merged-prs:end -->
+
+## 🧱 AI 全栈能力底座
+
+Agent 最终要运行在真实系统里，因此我也持续补齐后端、数据、部署和工程协作能力。
+
+<p>
+  <img src="https://skillicons.dev/icons?i=go,python,ts,mysql,redis,docker,git,github&theme=dark" alt="Go、Python、TypeScript、MySQL、Redis、Docker、Git 与 GitHub" />
+</p>
+
+| 能力方向 | 学习与实践内容 |
+| :-- | :-- |
+| 后端服务 | Go、Gin、GORM、gRPC、API 设计与服务治理 |
+| 数据与检索 | MySQL、Redis、向量检索、混合检索与 RAG |
+| Agent 应用 | Python、TypeScript、模型接入、工作流与交互界面 |
+| 工程交付 | Docker、测试、自动化、文档、代码审查与可观测性 |
+
+后端八股、源码笔记和工程知识也整理在[在线学习地图](https://sxh313.github.io/engineering-map/)中，用于查询、复习和项目实践。
+
+## 👋 关于我
+
+- 当前主线是 **AI Agent 工程与 AI 全栈应用开发**，Go 后端是重要的工程基础。
+- 喜欢把零散资料重新组织成有顺序、有实践、有验收标准的学习路径。
+- 通过真实项目和开源协作检验理解：阅读源码、定位问题、提交改动、跟踪反馈。
+- 持续整理学习过程，希望每一个知识点最后都能被解释、实现和验证。
 
 ## 📈 GitHub 活跃度
 
