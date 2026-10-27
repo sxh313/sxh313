@@ -11,7 +11,7 @@
 ### AI Agent 工程 · AI 全栈 · 开源贡献
 
 <p>
-  关注 Agent Runtime、工具调用、上下文与记忆、评估及生产化落地。<br/>
+  关注 Agent Harness、Runtime、工具调用、上下文与记忆、评估及生产化落地。<br/>
   我把学习、实践和开源协作沉淀成一套可以在线阅读、持续复习的中文知识库。
 </p>
 
@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/AI_Agent-Runtime_%26_Tool_Calling-8250DF?style=flat-square" alt="AI Agent Runtime 与工具调用" />
+  <img src="https://img.shields.io/badge/AI_Agent-Harness_%26_Runtime-8250DF?style=flat-square" alt="AI Agent Harness 与 Runtime" />
   <img src="https://img.shields.io/badge/Python-Agent_Engineering-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Agent Engineering" />
   <img src="https://img.shields.io/badge/Go-Backend_Foundation-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go Backend Foundation" />
 </p>
@@ -38,15 +38,18 @@
 我正在沿着一条完整的工程链路学习 Agent：不只关注 Prompt 和框架调用，也关注一个 Agent 怎样获得上下文、执行工具、保存状态、定位失败，并在评估之后持续改进。
 
 ```text
-用户目标 → 上下文构建 → 推理与规划 → 工具执行 → 环境反馈
-   ↑                                               ↓
-   └──────── 记忆 / 状态 / 评估 / 持续改进 ────────┘
+用户目标 → Harness 装配（模型 / 指令 / 工具 / 上下文）
+                       ↓
+          推理与规划 → 工具执行 → 环境反馈
+              ↑                       ↓
+              └── 状态 / 记忆 / 评估 ──┘
 ```
 
 | 从这里开始 | 适合什么时候看 | 站内入口 |
 | :-- | :-- | :-- |
 | **AI Agent 综合路线** | 第一次进入，先了解完整学习结构 | [进入学习中心 →](https://sxh313.github.io/engineering-map/ai/) |
 | **10 阶段融合手册** | 系统学习原理、工程控制点与面试表达 | [开始系统学习 →](https://sxh313.github.io/engineering-map/ai/handbook) |
+| **Coding Agent 与 Harness** | 理解 Agent 的运行外壳、Session、工具环境与恢复机制 | [阅读 Harness 专题 →](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses) |
 | **全部内容目录** | 查找 AI Agent Book 与 zero2Agent 的完整站内内容 | [查看完整目录 →](https://sxh313.github.io/engineering-map/ai/atlas) |
 | **实践学习契约** | 从“看懂”走向“做出、验证、复盘” | [进入实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) |
 | **Agent 面试专题** | 按工具、RAG、Runtime 等主题集中复习 | [进入面试复习 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/) |
@@ -56,6 +59,7 @@
 ## 🧠 我关注的 Agent 工程问题
 
 - **Agent Loop 与 Runtime：** 状态流转、任务生命周期、中断恢复、并行执行与可观测性。
+- **Agent Harness：** 模型、指令、工具、上下文和执行环境的装配，以及 Session、权限、隔离与恢复机制。
 - **Tool / MCP / Skill：** 工具描述、参数校验、权限边界、错误恢复与协议协作。
 - **Context / Memory / RAG：** 上下文选择、压缩、检索、长期记忆及知识更新。
 - **Coding Agent：** 文件、终端、代码搜索、沙箱、会话记录与人机协作。
