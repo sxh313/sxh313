@@ -56,6 +56,10 @@
 
 > 所有主要学习正文都部署在自己的 GitHub Pages 站内，可以直接在线阅读；手机端也按单列阅读和无横向滚动进行了适配。
 
+> 🛤️ **配套成长路线：前端 → 全栈 → Agent**  
+> 面向刚完成 Vibe Coding、希望进一步读懂和改造真实项目的学习者，依次补齐 TypeScript、React / Next.js、Node.js、PostgreSQL、Python / FastAPI 与 Agent 工程，并为每一阶段设置练习和完成标准。  
+> [查看完整飞书学习路线 →](https://bcnbltoq3sjn.feishu.cn/docx/EpEPd9agzoh0tpxdp4mc7cmMnfe)
+
 ## 🧠 我关注的 Agent 工程问题
 
 - **Agent Loop 与 Runtime：** 状态流转、任务生命周期、中断恢复、并行执行与可观测性。
@@ -92,6 +96,8 @@
 ## 🧱 AI 全栈能力底座
 
 Agent 最终要运行在真实系统里，因此我也持续补齐后端、数据、部署和工程协作能力。
+
+学习顺序不是孤立地堆技术栈，而是沿着 **前端交互 → 后端服务 → 数据存储 → Python 能力服务 → Agent 系统** 逐步形成完整的数据链路和工程视角。
 
 <p>
   <img src="https://skillicons.dev/icons?i=go,python,ts,mysql,redis,docker,git,github&theme=dark" alt="Go、Python、TypeScript、MySQL、Redis、Docker、Git 与 GitHub" />
