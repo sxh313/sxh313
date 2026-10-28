@@ -197,7 +197,10 @@ Agent 系统
 - 将零散资料整理为有顺序、有实践任务、有完成标准的中文学习路径。
 - 通过开源协作检验理解：阅读源码、定位问题、完成最小改动并跟踪上游反馈。
 
-## 📈 GitHub 活跃度
+<details>
+<summary><b>📈 查看 GitHub 活跃度</b></summary>
+
+<br/>
 
 <!-- activity:start -->
 最近 3 个月，数据来自 GitHub 贡献图。
@@ -216,3 +219,5 @@ Agent 系统
     <img alt="GitHub 贡献图动态贪吃蛇" src="https://raw.githubusercontent.com/sxh313/sxh313/github-snake/github-snake.svg" width="100%" />
   </picture>
 </p>
+
+</details>
