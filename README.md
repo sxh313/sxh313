@@ -6,13 +6,13 @@
 
 <div align="center">
 
-# 你好，我是 sxh313 👋
+# sxh313
 
-### AI Agent 工程 · AI 全栈 · 开源贡献
+### AI Agent Engineering · Agent Harness · Runtime
 
 <p>
-  关注 Agent Harness、Runtime、工具调用、上下文与记忆、评估及生产化落地。<br/>
-  我把学习、实践和开源协作沉淀成一套可以在线阅读、持续复习的中文知识库。
+  系统学习和实践 AI Agent 工程，关注可运行、可评估、可恢复、可生产化的智能体系统。<br/>
+  将原理、源码、工程、项目和面试内容重新组织成一套可以在线阅读、动手验证和反复复习的中文知识体系。
 </p>
 
 <p>
@@ -20,61 +20,110 @@
   ·
   <a href="https://sxh313.github.io/engineering-map/ai/handbook"><b>📖 融合学习手册</b></a>
   ·
-  <a href="#-开源贡献"><b>🌍 开源贡献</b></a>
+  <a href="https://sxh313.github.io/engineering-map/ai/roadmap"><b>🧪 实践路线</b></a>
   ·
-  <a href="https://github.com/sxh313?tab=repositories"><b>🧩 项目仓库</b></a>
+  <a href="#-开源贡献"><b>🌍 开源贡献</b></a>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/AI_Agent-Harness_%26_Runtime-8250DF?style=flat-square" alt="AI Agent Harness 与 Runtime" />
-  <img src="https://img.shields.io/badge/Python-Agent_Engineering-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Agent Engineering" />
-  <img src="https://img.shields.io/badge/Go-Backend_Foundation-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go Backend Foundation" />
+  <img src="https://img.shields.io/badge/AI_Agent-Engineering-8250DF?style=flat-square" alt="AI Agent Engineering" />
+  <img src="https://img.shields.io/badge/Harness_%26_Runtime-Systems-0969DA?style=flat-square" alt="Harness 与 Runtime" />
+  <img src="https://img.shields.io/badge/Open_Source-Contributor-1F883D?style=flat-square&logo=github&logoColor=white" alt="Open Source Contributor" />
 </p>
 
 </div>
 
-## 🤖 AI Agent 学习与实践
+## 🤖 AI Agent 综合知识体系
 
-我正在沿着一条完整的工程链路学习 Agent：不只关注 Prompt 和框架调用，也关注一个 Agent 怎样获得上下文、执行工具、保存状态、定位失败，并在评估之后持续改进。
+这不是两个开源仓库的链接集合，而是一套围绕 **Agent 怎样理解目标、组织上下文、调用工具、保存状态、评估结果并持续改进** 重新编排的学习体系。
+
+### 原理体系 · AI Agent Book
+
+用于建立 Agent 的整体认知框架，覆盖 Agent 基本原理、上下文工程、Memory 与 RAG、Tool Calling、Coding Agent、多模态交互、评估、训练、多 Agent 和持续进化。
+
+[阅读 AI Agent Book 站内版 →](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/)
+
+### 工程体系 · zero2Agent
+
+用于理解 Agent 如何从概念变成真实系统，覆盖 Agent Loop、Context Engineering、Tool Calling、Runtime、Agent Infra、Coding Agent、SDK 与框架、训练评估、生产项目和面试专题。
+
+[阅读 zero2Agent 站内版 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)
+
+### 运行体系 · Agent Harness
+
+Harness 是承载 Agent 运行所需能力的工程外壳：它把模型、指令、工具、上下文、权限和执行环境装配在一起，并处理 Session、Transcript、沙箱、状态持久化、中断恢复、人工确认和可观测性。
+
+[阅读 Coding Agent 与 Harness 专题 →](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses)
+
+### 实践与复习体系
+
+每个主题继续连接分阶段学习、动手实践、完成标准、自测问题、面试表达、项目拆解、失败分析以及评估回归，目标是把“读过”推进到“能够实现、验证和解释”。
+
+[进入实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) · [进入 Agent 面试专题 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)
+
+> **融合关系：**AI Agent Book 偏原理，zero2Agent 偏工程；[融合学习手册](https://sxh313.github.io/engineering-map/ai/handbook)负责把两套资料按同一条 Agent 工程主线重新组织。
+
+> **来源边界：**本站在遵守原项目署名和许可证要求的前提下进行站内整理与学习路径重组。AI Agent Book 使用 Apache License 2.0；zero2Agent 主体使用 MIT License；其面试部分使用 CC BY-NC-SA 4.0。
+
+## 🧭 AI Agent 学习主线
+
+1. **Agent 基本闭环**：理解模型、动作、观察和停止条件怎样组成最小 Agent Loop。
+2. **上下文工程**：决定当前任务真正需要哪些指令、历史、知识和环境信息。
+3. **Memory 与 RAG**：区分会话状态、长期记忆和外部知识检索的职责。
+4. **Tool / MCP / Skill**：理解工具能力、协议连接和可复用操作规范之间的边界。
+5. **Harness 与 Runtime**：装配运行环境，并管理状态、Session、调度、持久化和恢复。
+6. **Coding Agent**：让 Agent 安全地使用文件、终端、代码搜索、沙箱和异步任务。
+7. **评估与可观测性**：通过 Trace、数据集、失败分类和回归测试判断系统是否变好。
+8. **训练与行为优化**：理解预训练、SFT、RL 和推理期优化分别解决什么问题。
+9. **持续进化**：让知识、指令、程序和模型参数通过反馈闭环持续更新。
+10. **Multi-Agent 与生产项目**：处理任务拆分、协作边界、共享状态、交接和验收。
+
+[按照 10 个阶段阅读完整手册 →](https://sxh313.github.io/engineering-map/ai/handbook)
+
+## ⚙️ Harness、Runtime 与 Agent Loop
 
 ```text
-用户目标 → Harness 装配（模型 / 指令 / 工具 / 上下文）
-                       ↓
-          推理与规划 → 工具执行 → 环境反馈
-              ↑                       ↓
-              └── 状态 / 记忆 / 评估 ──┘
+用户目标
+  ↓
+Agent Harness
+  模型 · 指令 · 工具 · 上下文 · 权限 · 执行环境
+  ↓
+Agent Runtime
+  状态 · Session · 调度 · 持久化 · 中断恢复
+  ↓
+Agent Loop
+  推理 → 调用工具 → 获得观察 → 更新状态 → 判断是否继续
+  ↓
+评估与持续改进
 ```
 
-| 从这里开始 | 适合什么时候看 | 站内入口 |
-| :-- | :-- | :-- |
-| **AI Agent 综合路线** | 第一次进入，先了解完整学习结构 | [进入学习中心 →](https://sxh313.github.io/engineering-map/ai/) |
-| **10 阶段融合手册** | 系统学习原理、工程控制点与面试表达 | [开始系统学习 →](https://sxh313.github.io/engineering-map/ai/handbook) |
-| **Coding Agent 与 Harness** | 理解 Agent 的运行外壳、Session、工具环境与恢复机制 | [阅读 Harness 专题 →](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses) |
-| **全部内容目录** | 查找 AI Agent Book 与 zero2Agent 的完整站内内容 | [查看完整目录 →](https://sxh313.github.io/engineering-map/ai/atlas) |
-| **实践学习契约** | 从“看懂”走向“做出、验证、复盘” | [进入实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) |
-| **Agent 面试专题** | 按工具、RAG、Runtime 等主题集中复习 | [进入面试复习 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/) |
+Harness 不只是某个框架的名称。它负责为 Agent 准备并约束运行条件；Runtime 管理任务执行过程；Agent Loop 则在这些条件内不断推理、行动和观察。
 
-> 所有主要学习正文都部署在自己的 GitHub Pages 站内，可以直接在线阅读；手机端也按单列阅读和无横向滚动进行了适配。
+## 📚 站内学习入口
 
-> 🛤️ **配套成长路线：前端 → 全栈 → Agent**
->
-> 面向刚完成 Vibe Coding、希望进一步读懂和改造真实项目的学习者，依次补齐 TypeScript、React / Next.js、Node.js、PostgreSQL、Python / FastAPI 与 Agent 工程，并为每一阶段设置练习和完成标准。
->
-> [查看完整飞书学习路线 →](https://bcnbltoq3sjn.feishu.cn/docx/EpEPd9agzoh0tpxdp4mc7cmMnfe)
+- [AI Agent 学习首页](https://sxh313.github.io/engineering-map/ai/)：先了解整套知识体系及推荐学习顺序。
+- [AI Agent 融合手册](https://sxh313.github.io/engineering-map/ai/handbook)：按 10 个阶段学习原理、工程控制点和面试表达。
+- [AI Agent 全部内容目录](https://sxh313.github.io/engineering-map/ai/atlas)：查看两套来源内容到站内课程的完整映射。
+- [AI Agent 实践路线](https://sxh313.github.io/engineering-map/ai/roadmap)：通过练习、验收标准和复盘完成实践闭环。
+- [AI Agent Book 站内版](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/)：完整阅读原理章节和配套图表。
+- [zero2Agent 站内版](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)：完整阅读工程课程、项目和专题内容。
+- [Agent Harness 专题](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses)：理解 Coding Agent 的运行外壳和工程控制点。
+- [Agent 面试复习](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)：按工程主题复习高频问题和追问。
 
-## 🧠 我关注的 Agent 工程问题
+主要学习正文均部署在自己的 GitHub Pages 站内，可以直接在线阅读。
 
-- **Agent Loop 与 Runtime：** 状态流转、任务生命周期、中断恢复、并行执行与可观测性。
-- **Agent Harness：** 模型、指令、工具、上下文和执行环境的装配，以及 Session、权限、隔离与恢复机制。
-- **Tool / MCP / Skill：** 工具描述、参数校验、权限边界、错误恢复与协议协作。
-- **Context / Memory / RAG：** 上下文选择、压缩、检索、长期记忆及知识更新。
-- **Coding Agent：** 文件、终端、代码搜索、沙箱、会话记录与人机协作。
-- **Eval 与生产化：** Trace、数据集、失败分类、回归评估、成本和延迟控制。
-- **Multi-Agent：** 任务拆分、角色边界、共享状态、交接协议与结果验收。
+## 🧠 AI Agent 工程关注方向
+
+- **Harness 与 Runtime**：能力装配、任务生命周期、状态持久化、中断恢复和并行调度。
+- **Context / Memory / RAG**：上下文选择、压缩、检索、长期记忆和知识更新。
+- **Tool / MCP / Skill**：工具描述、参数校验、协议连接、权限边界和错误恢复。
+- **Coding Agent**：文件、终端、代码搜索、沙箱、Session Transcript 和人机协作。
+- **Evaluation**：Trace、测试集、失败分类、回归评估、成本与延迟控制。
+- **Multi-Agent**：任务拆分、角色边界、共享状态、交接协议和结果验收。
 
 ## 🌍 开源贡献
 
-这里展示已有 PR 被合并的上游项目。统计区块会自动更新，只展示项目级信息，不逐条罗列 PR。
+通过真实开源项目检验 Agent 工程理解，关注源码阅读、问题定位、最小改动、测试验证和上游协作。下面只展示已经合并 PR 的项目级统计，不将合并数量描述为项目主导经验。
 
 <!-- merged-prs:start -->
 <p align="center">
@@ -97,29 +146,56 @@
 
 ## 🧱 AI 全栈能力底座
 
-Agent 最终要运行在真实系统里，因此我也持续补齐后端、数据、部署和工程协作能力。
+Agent 最终需要接入真实界面、业务服务、数据库和部署环境。TypeScript、Python、Go 与数据工程因此是 Agent 落地的能力底座，而不是与 Agent 主线平行的独立方向。
 
-学习顺序不是孤立地堆技术栈，而是沿着 **前端交互 → 后端服务 → 数据存储 → Python 能力服务 → Agent 系统** 逐步形成完整的数据链路和工程视角。
+```text
+前端交互
+  ↓
+后端服务
+  ↓
+数据存储
+  ↓
+Python 能力服务
+  ↓
+Agent 系统
+```
 
 <p>
   <img src="https://skillicons.dev/icons?i=go,python,ts,mysql,redis,docker,git,github&theme=dark" alt="Go、Python、TypeScript、MySQL、Redis、Docker、Git 与 GitHub" />
 </p>
 
-| 能力方向 | 学习与实践内容 |
-| :-- | :-- |
-| 后端服务 | Go、Gin、GORM、gRPC、API 设计与服务治理 |
-| 数据与检索 | MySQL、Redis、向量检索、混合检索与 RAG |
-| Agent 应用 | Python、TypeScript、模型接入、工作流与交互界面 |
-| 工程交付 | Docker、测试、自动化、文档、代码审查与可观测性 |
+- **前端与交互**：TypeScript、React、Next.js，以及 Agent 任务状态和结果展示。
+- **后端服务**：Go、Gin、GORM、gRPC、Node.js、API 设计和任务接口。
+- **数据与检索**：MySQL、PostgreSQL、Redis、向量检索、混合检索和 RAG。
+- **能力服务**：Python、FastAPI、模型接入、数据处理和 Agent 工具服务。
+- **工程交付**：Docker、测试、自动化、文档、代码审查和可观测性。
 
 后端八股、源码笔记和工程知识也整理在[在线学习地图](https://sxh313.github.io/engineering-map/)中，用于查询、复习和项目实践。
 
+## 🛤️ 配套成长路线：前端 → 全栈 → Agent
+
+这条路线用于为 AI Agent 应用开发补齐前端、后端、数据库和 Python 服务能力，适合从 Vibe Coding 继续走向“能够读懂、修改和验证完整项目”的学习阶段。
+
+覆盖内容包括：
+
+- JavaScript / TypeScript
+- React / Next.js
+- Node.js / Express
+- PostgreSQL / SQL
+- Python / FastAPI
+- Agent 工程与完整项目
+- 八股复习与模拟面试
+
+[查看飞书外部学习路线 →](https://bcnbltoq3sjn.feishu.cn/docx/EpEPd9agzoh0tpxdp4mc7cmMnfe)
+
+> 这是配套的外部飞书文档，不属于 GitHub Pages 站内 AI Agent 知识库正文。
+
 ## 👋 关于我
 
-- 当前主线是 **AI Agent 工程与 AI 全栈应用开发**，Go 后端是重要的工程基础。
-- 喜欢把零散资料重新组织成有顺序、有实践、有验收标准的学习路径。
-- 通过真实项目和开源协作检验理解：阅读源码、定位问题、提交改动、跟踪反馈。
-- 持续整理学习过程，希望每一个知识点最后都能被解释、实现和验证。
+- 当前主线是 **AI Agent 工程与 AI 全栈应用开发**。
+- 正在通过原理学习、源码阅读、项目实践和评估复盘理解 Agent 系统。
+- 将零散资料整理为有顺序、有实践任务、有完成标准的中文学习路径。
+- 通过开源协作检验理解：阅读源码、定位问题、完成最小改动并跟踪上游反馈。
 
 ## 📈 GitHub 活跃度
 
