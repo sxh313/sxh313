@@ -35,16 +35,17 @@
 
 </div>
 
-## 📌 精选项目
+## 📌 个人项目
 
-当前 GitHub 主页置顶的两个项目，分别对应 AI 学习知识管理和 AI 原生研究工作台。
+这里展示你当前 GitHub 主页实时置顶的个人项目，项目顺序与主页 Pin 顺序保持一致。
 
 | 项目 | 定位 | 技术栈 |
 | :-- | :-- | :-- |
+| [AgentOS](https://github.com/sxh313/AgentOS) | 基于 Pi Agent Core 的企业级 AgentOS CRM | TypeScript |
 | [知屿 · knowledge-base](https://github.com/sxh313/knowledge-base) | 本地优先的 AI 学习笔记与知识管理应用，支持 Web/PWA、Windows、Android | TypeScript |
 | [Lodestar](https://github.com/sxh313/lodestar) | 本地优先的 AI 原生投资研究工作台 | TypeScript |
 
-> 这两个项目是“学习 → 实践 → 作品”的入口；下面的 AI Agent 学习体系用于解释其中涉及的 Agent、知识库、工具和工程方法。
+> 这些项目是“学习 → 实践 → 作品”的入口；下面的 AI Agent 学习体系用于解释其中涉及的 Agent、知识库、工具和工程方法。
 
 ## 🤖 AI Agent 综合知识体系
 
