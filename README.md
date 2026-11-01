@@ -35,6 +35,17 @@
 
 </div>
 
+## 📌 精选项目
+
+当前 GitHub 主页置顶的两个项目，分别对应 AI 学习知识管理和 AI 原生研究工作台。
+
+| 项目 | 定位 | 技术栈 |
+| :-- | :-- | :-- |
+| [知屿 · knowledge-base](https://github.com/sxh313/knowledge-base) | 本地优先的 AI 学习笔记与知识管理应用，支持 Web/PWA、Windows、Android | TypeScript |
+| [Lodestar](https://github.com/sxh313/lodestar) | 本地优先的 AI 原生投资研究工作台 | TypeScript |
+
+> 这两个项目是“学习 → 实践 → 作品”的入口；下面的 AI Agent 学习体系用于解释其中涉及的 Agent、知识库、工具和工程方法。
+
 ## 🤖 AI Agent 综合知识体系
 
 这不是两个开源仓库的链接集合，而是一套围绕 **Agent 怎样理解目标、组织上下文、调用工具、保存状态、评估结果并持续改进** 重新编排的学习体系。
