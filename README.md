@@ -22,6 +22,8 @@
   ·
   <a href="https://sxh313.github.io/engineering-map/ai/roadmap"><b>🧪 实践路线</b></a>
   ·
+  <a href="https://sxh313.github.io/engineering-map/vibe/"><b>🛠️ Vibe Coding 导读</b></a>
+  ·
   <a href="#-开源贡献"><b>🌍 开源贡献</b></a>
 </p>
 
@@ -80,6 +82,14 @@ Harness 是承载 Agent 运行所需能力的工程外壳：它把模型、指�
 
 [按照 10 个阶段阅读完整手册 →](https://sxh313.github.io/engineering-map/ai/handbook)
 
+## 🛠️ Vibe Coding：从想法到可交付产品
+
+在 Agent 工程学习之外，补充一条 AI 辅助编程实践路线：从明确用户问题、拆解最小需求开始，逐步完成页面、功能、测试和部署。它帮助练习“用 AI 把想法做成产品”，并与上面的 Agent 系统原理路线互相补充。
+
+[打开站内 Vibe Coding 学习导读 →](https://sxh313.github.io/engineering-map/vibe/)
+
+参考项目：[Datawhale Vibe Vibe](https://github.com/datawhalechina/vibe-vibe)。上游仓库当前未声明许可证，因此本站只提供自编导读与来源入口，不转载其课程内容。
+
 ## ⚙️ Harness、Runtime 与 Agent Loop
 
 ```text
@@ -105,6 +115,7 @@ Harness 不只是某个框架的名称。它负责为 Agent 准备并约束运�
 - [AI Agent 融合手册](https://sxh313.github.io/engineering-map/ai/handbook)：按 10 个阶段学习原理、工程控制点和面试表达。
 - [AI Agent 全部内容目录](https://sxh313.github.io/engineering-map/ai/atlas)：查看两套来源内容到站内课程的完整映射。
 - [AI Agent 实践路线](https://sxh313.github.io/engineering-map/ai/roadmap)：通过练习、验收标准和复盘完成实践闭环。
+- [Vibe Coding 学习导读](https://sxh313.github.io/engineering-map/vibe/)：按“想法—需求—实现—交付”练习 AI 辅助开发。
 - [AI Agent Book 站内版](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/)：完整阅读原理章节和配套图表。
 - [zero2Agent 站内版](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)：完整阅读工程课程、项目和专题内容。
 - [Agent Harness 专题](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses)：理解 Coding Agent 的运行外壳和工程控制点。
