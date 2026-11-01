@@ -75,9 +75,18 @@ Harness 是承载 Agent 运行所需能力的工程外壳：它把模型、指�
 
 [进入实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) · [进入 Agent 面试专题 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)
 
-> **融合关系：**AI Agent Book 偏原理，zero2Agent 偏工程；[融合学习手册](https://sxh313.github.io/engineering-map/ai/handbook)负责把两套资料按同一条 Agent 工程主线重新组织。
-
-> **来源边界：**本站在遵守原项目署名和许可证要求的前提下进行站内整理与学习路径重组。AI Agent Book 使用 Apache License 2.0；zero2Agent 主体使用 MIT License；其面试部分使用 CC BY-NC-SA 4.0。
+> **融合关系**
+>
+> - **AI Agent Book**：偏原理，帮助建立 Agent 的整体认知框架。
+> - **zero2Agent**：偏工程，帮助理解 Agent 如何落地为真实系统。
+> - **融合学习手册**：将两套资料按同一条 Agent 工程主线重新组织。
+>
+> **来源边界**
+>
+> - **AI Agent Book**：使用 **Apache License 2.0**。
+> - **zero2Agent 主体**：使用 **MIT License**。
+> - **zero2Agent 面试部分**：使用 **CC BY-NC-SA 4.0**。
+> - 本站遵守原项目署名和许可证要求，进行站内整理与学习路径重组。
 
 ## 🧭 AI Agent 学习主线
 
