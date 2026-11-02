@@ -8,11 +8,11 @@
 
 # sxh313
 
-### AI Agent Engineering · Agent Harness · Runtime
+### AI Agent 工程 · AI 全栈产品 · 开源协作
 
 <p>
-  系统学习和实践 AI Agent 工程，关注可运行、可评估、可恢复、可生产化的智能体系统。<br/>
-  将原理、源码、工程、项目和面试内容重新组织成一套可以在线阅读、动手验证和反复复习的中文知识体系。
+  关注 Agent 如何从模型能力变成可运行、可评估、可交付的产品。<br/>
+  通过个人项目、源码阅读和开源协作，把学习结果沉淀成可以复用的工程经验。
 </p>
 
 <p>
@@ -37,13 +37,13 @@
 
 ## 📌 个人项目
 
-这里展示你当前 GitHub 主页实时置顶的个人项目，项目顺序与主页 Pin 顺序保持一致。
+这里展示当前 GitHub 主页实时置顶的个人项目，项目顺序与主页 Pin 顺序保持一致。
 
-| 项目 | 定位 | 技术栈 |
+| 项目 | 解决什么问题 | 关键词 |
 | :-- | :-- | :-- |
-| [AgentOS](https://github.com/sxh313/AgentOS) | 基于 Pi Agent Core 的企业级 AgentOS CRM | TypeScript |
-| [知屿 · knowledge-base](https://github.com/sxh313/knowledge-base) | 本地优先的 AI 学习笔记与知识管理应用，支持 Web/PWA、Windows、Android | TypeScript |
-| [Lodestar](https://github.com/sxh313/lodestar) | 本地优先的 AI 原生投资研究工作台 | TypeScript |
+| [AgentOS](https://github.com/sxh313/AgentOS) | 用 Agent 能力支撑企业 CRM 工作流 | Pi Agent Core · TypeScript |
+| [知屿 · knowledge-base](https://github.com/sxh313/knowledge-base) | 管理可检索、可持续积累的 AI 学习知识 | 本地优先 · Web/PWA · TypeScript |
+| [Lodestar](https://github.com/sxh313/lodestar) | 把 AI 用于本地优先的投资研究工作流 | AI Research · TypeScript |
 
 > 这些项目是“学习 → 实践 → 作品”的入口；下面的 AI Agent 学习体系用于解释其中涉及的 Agent、知识库、工具和工程方法。
 
