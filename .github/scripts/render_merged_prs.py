@@ -3,8 +3,7 @@
 
 Merged-PR block: badges over every project that merged a pull request and has at least
 MIN_STARS (1,000) stars, then one row per FEATURED project carrying that project's own
-repository description, then an ellipsis row for the remainder so the visible counts still
-add up to the badges. The query selects no PR title, number or URL, so the page stays at
+repository description. The query selects no PR title, number or URL, so the page stays at
 project-level counts only.
 
 Activity block: contribution, commit and repository totals for the trailing ACTIVITY_DAYS, read
@@ -34,15 +33,13 @@ DESC_MAX = 90
 # Contribution window in days. The prose derives from this number, so the two cannot drift apart.
 ACTIVITY_DAYS = 90
 
-# The only projects named on the page. Names are matched exactly, so a transfer or rename
-# silently drops the row rather than showing the wrong project; the merges it carried stay in
-# the totals and move to the ellipsis row.
+# The only projects shown in the contribution table. Names are matched exactly, so a transfer
+# or rename silently drops the row rather than showing the wrong project. The headline badges
+# still report the complete contribution totals.
 FEATURED = (
     "openclaw/openclaw",
     "bytedance/deer-flow",
     "agentscope-ai/agentscope",
-    "QwenLM/qwen-code",
-    "TencentCloud/Octop",
 )
 
 # 首页展示中文简介，避免上游仓库的英文描述破坏中文阅读体验。
@@ -50,8 +47,6 @@ FEATURED_ZH = {
     "openclaw/openclaw": "可以在任意操作系统和平台上执行真实任务的开源 AI 助手。",
     "bytedance/deer-flow": "面向深度研究、代码生成与内容创作的长程智能体框架。",
     "agentscope-ai/agentscope": "用于构建、运行与观测可信智能体的开发框架。",
-    "QwenLM/qwen-code": "运行在终端中的开源 AI 编程智能体。",
-    "TencentCloud/Octop": "支持多用户、多智能体协作的自托管 AI 助手。",
 }
 
 PAGE = """
@@ -260,25 +255,6 @@ def render(all_rows: list[dict], featured_rows: list[dict], merged_total: int) -
             row += f"| {lang} "
         out.append(row + f"| {entry['merged']} |")
 
-    # The five rows above are a shortlist. GitHub strips style attributes, so no row can be hidden
-    # on its own and <details> cannot wrap a <tr> - but it does survive inside a cell, measured on
-    # the rendered page. Keeping the tail in that row's first cell means one table with one set of
-    # column widths, and the row still carries the remainder's totals, so the page adds up to the
-    # badges without anyone having to click.
-    listed = aggregate(featured_rows)
-    hidden = {name: projects[name] for name in projects if name not in listed}
-    if hidden:
-        rest = total_star_cells - sum(cells[name] for name in listed)
-        items = "".join(
-            f"<br>{avatar(name)}[`{name}`](https://github.com/{name})"
-            f" &middot; {stars(cells[name])} &middot; {hidden[name]['merged']}"
-            for name in sorted(hidden, key=by_stars)
-        )
-        note = f"<details><summary><sub>展开其余 {len(hidden)} 个项目</sub></summary>{items}</details>"
-        row = f"| {note} | {stars(rest)} "
-        row += "| — " if show_lang else ""
-        out.append(row + f"| {merged_total - len(featured_rows)} |")
-
     if len(all_rows) < merged_total:
         out += ["", f"<sub>各项目统计基于最近 {len(all_rows)} 条合并记录。</sub>"]
     return "\n".join(out)
@@ -355,7 +331,7 @@ def main() -> int:
 
     body = render(rows, featured, merged_total) + (
         f"\n\n<sub>仅统计 Stars 不低于 {MIN_STARS:,} 的项目及其中已合并的 PR。"
-        "表格展示 5 个代表项目，其余项目可在最后一行展开。"
+        "表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。"
         "数据由 "
         "[.github/workflows/refresh.yml](.github/workflows/refresh.yml)"
         f" 自动更新；最后更新于 {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}。</sub>"
