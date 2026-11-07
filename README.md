@@ -91,6 +91,11 @@ Harness 是承载 Agent 运行所需能力的工程外壳，负责把模型、�
 
 按下面的顺序，从最小闭环逐步走向可运行、可评估、可恢复的 Agent 系统：
 
+<details>
+<summary><b>展开查看：10 阶段学习路线</b></summary>
+
+<br/>
+
 1. **Agent 基本闭环**：理解模型、动作、观察和停止条件如何组成最小 Agent Loop。
 2. **Context Engineering**：选择当前任务真正需要的指令、历史、知识和环境信息。
 3. **Memory 与 RAG**：区分会话状态、长期记忆和外部知识检索的职责。
@@ -103,6 +108,8 @@ Harness 是承载 Agent 运行所需能力的工程外壳，负责把模型、�
 10. **Multi-Agent 与生产项目**：处理任务拆分、协作边界、共享状态、交接和验收。
 
 [按照 10 个阶段阅读完整融合手册 →](https://sxh313.github.io/engineering-map/ai/handbook)
+
+</details>
 
 ## ⚙️ Agent Harness 与 Runtime
 
