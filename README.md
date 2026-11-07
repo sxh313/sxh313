@@ -35,6 +35,11 @@
 
 这里不是简单收集链接，而是把原理资料、工程资料、运行机制、实践任务和面试复习，重新编排成一条 Agent 工程主线：理解 Agent 如何组织上下文、调用工具、保存状态、完成任务，并通过评估持续改进。
 
+<details>
+<summary><b>展开查看：资料构成、融合关系与来源许可</b></summary>
+
+<br/>
+
 ### 1. 原理体系：AI Agent Book
 
 偏向建立整体认知，覆盖 Agent 基本原理、上下文工程、Memory 与 RAG、Tool Calling、Coding Agent、多模态交互、评估、训练、多 Agent 和持续进化。
@@ -79,6 +84,8 @@ Harness 是承载 Agent 运行所需能力的工程外壳，负责把模型、�
 > - zero2Agent 主体：MIT License
 > - zero2Agent 面试部分：CC BY-NC-SA 4.0
 > - 本站遵守原项目署名和许可证要求，进行站内整理与学习路径重组，不将相关资料表述为个人原创教材。
+
+</details>
 
 ## 🧭 AI Agent 学习路线
 
