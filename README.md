@@ -146,7 +146,7 @@ Agent Loop
 <p align="center">
   <img src="https://img.shields.io/badge/%E5%B7%B2%E5%90%88%E5%B9%B6%20PR-69-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="69 已合并 pr" />
   <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E9%A1%B9%E7%9B%AE-18-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="18 贡献项目" />
-  <img src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E9%A1%B9%E7%9B%AE%20Stars-954.9k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="954.9k 上游项目 stars" />
+  <img src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E9%A1%B9%E7%9B%AE%20Stars-955.2k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="955.2k 上游项目 stars" />
 </p>
 
 | 贡献项目 | ★ | 主要语言 | 已合并 |
@@ -155,7 +155,7 @@ Agent Loop
 | <img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="" />&nbsp;[`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>面向深度研究、代码生成与内容创作的长程智能体框架。</sub> | 85.1k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 12 |
 | <img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>用于构建、运行与观测可信智能体的开发框架。</sub> | 35.5k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 8 |
 
-<sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-11-06 21:46 UTC。</sub>
+<sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-11-07 14:07 UTC。</sub>
 <!-- merged-prs:end -->
 
 ## 🧱 AI 全栈能力底座
