@@ -8,149 +8,56 @@
 
 # sxh313
 
-### AI Agent 工程 · Agent Harness · AI 全栈能力底座
+### AI Agent 工程 · 产品实践 · 开源协作
 
 <p>
-  欢迎来到我的工程学习主页。<br/>
-  我正在围绕 Agent Harness、Runtime、上下文、记忆、工具调用、评估与生产化，<br/>
-  整理一套可以在线阅读、实践和复习的 AI Agent 中文学习体系。
+  通过个人项目与真实开源协作，持续实践<br/>
+  Agent Runtime、Tool Calling、Memory / RAG 与 Evaluation。
 </p>
 
 <p>
-  <a href="https://sxh313.github.io/engineering-map/ai/"><b>🤖 AI Agent 学习中心</b></a><br/>
-  <a href="https://sxh313.github.io/engineering-map/ai/handbook"><b>📖 融合学习手册</b></a><br/>
-  <a href="https://sxh313.github.io/engineering-map/ai/roadmap"><b>🧪 AI Agent 实践路线</b></a><br/>
-  <a href="#-开源贡献"><b>🌍 开源贡献</b></a>
+  <a href="#-精选项目"><b>精选项目</b></a>
+  ·
+  <a href="#-开源贡献"><b>开源贡献</b></a>
+  ·
+  <a href="https://sxh313.github.io/engineering-map/ai/"><b>学习地图</b></a>
 </p>
 
 <p>
   <img src="https://img.shields.io/badge/AI_Agent-Engineering-8250DF?style=flat-square" alt="AI Agent Engineering" />
-  <img src="https://img.shields.io/badge/Harness_%26_Runtime-Systems-0969DA?style=flat-square" alt="Harness 与 Runtime" />
-  <img src="https://img.shields.io/badge/Open_Source-Contributor-1F883D?style=flat-square&logo=github&logoColor=white" alt="Open Source Contributor" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Open_Source-1F883D?style=flat-square&logo=github&logoColor=white" alt="Open Source" />
 </p>
 
 </div>
 
-## 🤖 AI Agent 综合知识体系
+## 🚀 精选项目
 
-这里不是简单收集链接，而是把原理资料、工程资料、运行机制、实践任务和面试复习，重新编排成一条 Agent 工程主线：理解 Agent 如何组织上下文、调用工具、保存状态、完成任务，并通过评估持续改进。
+以下项目按 GitHub Pin 顺序展示。它们分别从个人助理、业务 Agent、知识管理和研究工作台四个场景，验证 Agent 能力如何进入真实产品。
 
-<details>
-<summary><b>展开查看：资料构成、融合关系与来源许可</b></summary>
+### [LingDot](https://github.com/sxh313/LingDot)
 
-<br/>
+自托管的个人 AI 助手与 Agent 团队，基于 Pi Runtime 构建。
 
-### 1. 原理体系：AI Agent Book
+`TypeScript` · `Agent Runtime` · `Self-hosted` · `Multi-Agent`
 
-偏向建立整体认知，覆盖 Agent 基本原理、上下文工程、Memory 与 RAG、Tool Calling、Coding Agent、多模态交互、评估、训练、多 Agent 和持续进化。
+### [AgentOS](https://github.com/sxh313/AgentOS)
 
-[阅读 AI Agent Book 站内版 →](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/)
+面向 CRM 场景的企业级 AgentOS 实践，基于 Pi Agent Core 构建。
 
-### 2. 工程体系：zero2Agent
+`TypeScript` · `Agent Core` · `CRM` · `Business Workflow`
 
-偏向理解真实系统，覆盖 Agent Loop、Context Engineering、Tool Calling、Runtime、Agent Infra、Coding Agent、SDK 与框架、训练评估、生产项目和 Agent 面试专题。
+### [knowledge-base](https://github.com/sxh313/knowledge-base)
 
-[阅读 zero2Agent 站内版 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)
+知屿 ZhiYu：本地优先的 AI 学习笔记与知识管理应用，支持 Web / PWA、Windows 与 Android。
 
-### 3. 运行体系：Agent Harness
+`TypeScript` · `Local-first` · `Knowledge Management` · `Cross-platform`
 
-Harness 是承载 Agent 运行所需能力的工程外壳，负责把模型、指令、工具、上下文、权限和执行环境装配起来，并约束它们如何协作。
+### [lodestar](https://github.com/sxh313/lodestar)
 
-它重点处理：
+本地优先的 AI 原生投资研究工作台，探索研究资料、分析过程与 Agent 协作的统一工作流。
 
-- Agent Loop 的运行控制
-- Session、Transcript 与状态持久化
-- 工具权限、调用边界和人工确认
-- 沙箱、终端、文件与代码搜索能力
-- 中断恢复、可观测性和 Coding Agent 的执行环境
-
-[阅读 Agent Harness 专题 →](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses)
-
-### 4. 实践与复习体系
-
-通过分阶段学习、动手实践、完成标准、自测问题、项目拆解、失败分析、面试表达和评估回归，把“读过”推进到“能够实现、验证和解释”。
-
-[进入 AI Agent 实践路线 →](https://sxh313.github.io/engineering-map/ai/roadmap) · [进入 Agent 面试专题 →](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)
-
-> **融合关系**
->
-> - **AI Agent Book**：偏原理，帮助建立 Agent 的整体认知框架。
-> - **zero2Agent**：偏工程，帮助理解 Agent 如何落地为真实系统。
-> - **融合学习手册**：将两套资料按同一条 Agent 工程主线重新组织。
->
-> **来源与许可**
->
-> - AI Agent Book：Apache License 2.0
-> - zero2Agent 主体：MIT License
-> - zero2Agent 面试部分：CC BY-NC-SA 4.0
-> - 本站遵守原项目署名和许可证要求，进行站内整理与学习路径重组，不将相关资料表述为个人原创教材。
-
-</details>
-
-## 🧭 AI Agent 学习路线
-
-按下面的顺序，从最小闭环逐步走向可运行、可评估、可恢复的 Agent 系统：
-
-<details>
-<summary><b>展开查看：10 阶段学习路线</b></summary>
-
-<br/>
-
-1. **Agent 基本闭环**：理解模型、动作、观察和停止条件如何组成最小 Agent Loop。
-2. **Context Engineering**：选择当前任务真正需要的指令、历史、知识和环境信息。
-3. **Memory 与 RAG**：区分会话状态、长期记忆和外部知识检索的职责。
-4. **Tool / MCP / Skill**：理解工具能力、协议连接和可复用操作规范的边界。
-5. **Harness 与 Runtime**：装配运行环境，管理状态、Session、调度、持久化和恢复。
-6. **Coding Agent**：让 Agent 安全使用文件、终端、代码搜索、沙箱和异步任务。
-7. **评估与可观测性**：用 Trace、数据集、失败分类和回归测试判断系统是否变好。
-8. **训练与行为优化**：理解预训练、SFT、RL 和推理期优化分别解决什么问题。
-9. **持续进化**：让知识、指令、程序和模型参数通过反馈闭环持续更新。
-10. **Multi-Agent 与生产项目**：处理任务拆分、协作边界、共享状态、交接和验收。
-
-[按照 10 个阶段阅读完整融合手册 →](https://sxh313.github.io/engineering-map/ai/handbook)
-
-</details>
-
-## ⚙️ Agent Harness 与 Runtime
-
-Harness 不是某个普通框架名称，而是为 Agent 准备并约束运行条件的工程外壳；Runtime 管理任务执行过程；Agent Loop 在这些条件内持续推理、行动和观察。
-
-```text
-用户目标
-  ↓
-Agent Harness
-  模型 · 指令 · 工具 · 上下文 · 权限 · 执行环境
-  ↓
-Agent Runtime
-  Session · 状态 · 调度 · 持久化 · 中断恢复
-  ↓
-Agent Loop
-  推理 → 工具调用 → 观察 → 更新状态 → 继续或结束
-  ↓
-评估与持续改进
-```
-
-## 📚 站内学习入口
-
-核心内容优先指向自己的 GitHub Pages，外部来源仅作为原始资料和配套路线说明：
-
-- [AI Agent 学习首页](https://sxh313.github.io/engineering-map/ai/)
-- [AI Agent 融合手册](https://sxh313.github.io/engineering-map/ai/handbook)
-- [AI Agent 全部内容目录](https://sxh313.github.io/engineering-map/ai/atlas)
-- [AI Agent 实践路线](https://sxh313.github.io/engineering-map/ai/roadmap)
-- [AI Agent Book 站内版](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/)
-- [zero2Agent 站内版](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)
-- [Agent Harness 专题](https://sxh313.github.io/engineering-map/ai/handbook#appendix-harnesses)
-- [Agent 面试复习](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)
-
-## 🧠 AI Agent 工程关注方向
-
-- **Harness 与 Runtime**：能力装配、任务生命周期、状态持久化、中断恢复和调度。
-- **Context / Memory / RAG**：上下文选择、压缩、检索、长期记忆和知识更新。
-- **Tool / MCP / Skill**：工具描述、参数校验、协议连接、权限边界和错误恢复。
-- **Coding Agent**：文件、终端、代码搜索、沙箱、Session Transcript 和人机协作。
-- **Evaluation**：Trace、测试集、失败分类、回归评估、成本与延迟控制。
-- **Multi-Agent**：任务拆分、角色边界、共享状态、交接协议和结果验收。
+`TypeScript` · `AI-native` · `Research Workspace` · `Local-first`
 
 ## 🌍 开源贡献
 
@@ -172,54 +79,37 @@ Agent Loop
 <sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-11-07 14:44 UTC。</sub>
 <!-- merged-prs:end -->
 
-## 🧱 AI 全栈能力底座
+## 🧠 工程关注
 
-Agent 最终需要接入真实界面、业务服务、数据库和部署环境。TypeScript、Python、Go 与数据工程是 Agent 落地的能力底座，而不是与 Agent 主线平行的独立方向。
+- **Harness / Runtime**：任务生命周期、状态持久化、调度、中断与恢复。
+- **Tool / MCP / Skill**：能力描述、协议连接、权限边界与调用可靠性。
+- **Context / Memory / RAG**：上下文选择、长期记忆、检索与知识更新。
+- **Evaluation**：Trace、失败分类、回归测试，以及成本与延迟权衡。
+- **Multi-Agent**：任务拆分、共享状态、交接协议与结果验收。
 
-```text
-前端交互
-  ↓
-Node.js / Go 后端服务
-  ↓
-数据库与检索
-  ↓
-Python 能力服务
-  ↓
-Agent 系统
-```
+TypeScript、Python、Go、数据库与部署能力，作为这些 Agent 系统落地的工程支撑。
 
-- **前端与交互**：TypeScript、React、Next.js，以及 Agent 任务状态和结果展示。
-- **后端服务**：Go、Gin、GORM、gRPC、Node.js、API 设计和任务接口。
-- **数据与检索**：MySQL、PostgreSQL、Redis、向量检索、混合检索和 RAG。
-- **能力服务**：Python、FastAPI、模型接入、数据处理和 Agent 工具服务。
-- **工程交付**：Docker、测试、自动化、文档、代码审查和可观测性。
+## 📚 学习与整理
 
-[在线学习地图 →](https://sxh313.github.io/engineering-map/)
+<details>
+<summary><b>展开查看 AI Agent 学习资料</b></summary>
 
-## 🛤️ 配套成长路线：前端 → 全栈 → Agent
+<br/>
 
-这是一条外部配套路线，用来补齐 AI Agent 应用开发所需的前端、后端、数据库和 Python 服务能力：
+- [AI Agent 学习首页](https://sxh313.github.io/engineering-map/ai/)：主题索引与阅读入口。
+- [AI Agent 融合手册](https://sxh313.github.io/engineering-map/ai/handbook)：按统一工程主线组织原理与实践。
+- [AI Agent 实践路线](https://sxh313.github.io/engineering-map/ai/roadmap)：从最小闭环走向可运行、可评估、可恢复的系统。
+- [Agent 面试复习](https://sxh313.github.io/engineering-map/ai/library/zero2agent/learn-agent-interview/)：项目拆解、失败分析与面试表达。
 
-- JavaScript / TypeScript
-- React / Next.js
-- Node.js / Express
-- PostgreSQL / SQL
-- Python / FastAPI
-- Agent 工程与完整项目
-- 八股复习与模拟面试
+资料整理参考 [AI Agent Book](https://sxh313.github.io/engineering-map/ai/library/ai-agent-book/) 与 [zero2Agent](https://sxh313.github.io/engineering-map/ai/library/zero2agent/)。AI Agent Book 使用 Apache License 2.0；zero2Agent 主体使用 MIT License，面试部分使用 CC BY-NC-SA 4.0。本站保留来源与许可边界，不将整理内容表述为个人原创教材。
 
-前端交互 → Node.js 后端 → 数据库 → Python 能力服务 → Agent 系统。
-
-[查看飞书外部学习路线 →](https://bcnbltoq3sjn.feishu.cn/docx/EpEPd9agzoh0tpxdp4mc7cmMnfe)
-
-> 这是外部飞书文档，不属于 GitHub Pages 站内 AI Agent 知识库正文。
+</details>
 
 ## 👋 关于我
 
-- 当前主线是 **AI Agent 工程与 AI 全栈应用开发**。
-- 正在通过原理学习、源码阅读、项目实践和评估复盘理解 Agent 系统。
-- 将零散资料整理为有顺序、有实践任务、有完成标准的中文学习路径。
-- 通过开源协作检验理解：阅读源码、定位问题、完成最小改动并跟踪上游反馈。
+- 目前专注于 **AI Agent 工程与产品实践**。
+- 通过源码阅读、个人项目和评估复盘理解 Agent 系统的真实边界。
+- 通过开源协作练习问题定位、最小改动、测试验证和上游沟通。
 
 <details>
 <summary><b>📈 查看 GitHub 活跃度</b></summary>
