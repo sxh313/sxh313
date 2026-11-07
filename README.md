@@ -153,16 +153,16 @@ Agent Loop
 <p align="center">
   <img src="https://img.shields.io/badge/%E5%B7%B2%E5%90%88%E5%B9%B6%20PR-69-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="69 已合并 pr" />
   <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E9%A1%B9%E7%9B%AE-18-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="18 贡献项目" />
-  <img src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E9%A1%B9%E7%9B%AE%20Stars-955.2k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="955.2k 上游项目 stars" />
+  <img src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E9%A1%B9%E7%9B%AE%20Stars-955.3k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="955.3k 上游项目 stars" />
 </p>
 
 | 贡献项目 | ★ | 主要语言 | 已合并 |
 | :-- | --: | :-- | --: |
 | <img src="https://github.com/openclaw.png?size=48" width="24" height="24" alt="" />&nbsp;[`openclaw/openclaw`](https://github.com/openclaw/openclaw)<br><sub>可以在任意操作系统和平台上执行真实任务的开源 AI 助手。</sub> | 394.1k | ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) | 11 |
 | <img src="https://github.com/bytedance.png?size=48" width="24" height="24" alt="" />&nbsp;[`bytedance/deer-flow`](https://github.com/bytedance/deer-flow)<br><sub>面向深度研究、代码生成与内容创作的长程智能体框架。</sub> | 85.1k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 12 |
-| <img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>用于构建、运行与观测可信智能体的开发框架。</sub> | 35.5k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 8 |
+| <img src="https://github.com/agentscope-ai.png?size=48" width="24" height="24" alt="" />&nbsp;[`agentscope-ai/agentscope`](https://github.com/agentscope-ai/agentscope)<br><sub>用于构建、运行与观测可信智能体的开发框架。</sub> | 35.6k | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white) | 8 |
 
-<sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-11-07 14:07 UTC。</sub>
+<sub>仅统计 Stars 不低于 1,000 的项目及其中已合并的 PR。表格仅展示 openclaw/openclaw、bytedance/deer-flow 和 agentscope-ai/agentscope。数据由 [.github/workflows/refresh.yml](.github/workflows/refresh.yml) 自动更新；最后更新于 2026-11-07 14:44 UTC。</sub>
 <!-- merged-prs:end -->
 
 ## 🧱 AI 全栈能力底座
@@ -225,7 +225,7 @@ Agent 系统
 <p align="center">
   <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E6%95%B0-9.8k-8250DF?style=for-the-badge&logo=github&logoColor=white" alt="9.8k 贡献数" />
   <img src="https://img.shields.io/badge/%E6%8F%90%E4%BA%A4%E6%95%B0-9.2k-8250DF?style=for-the-badge&logo=git&logoColor=white" alt="9.2k 提交数" />
-  <img src="https://img.shields.io/badge/%E6%B6%89%E5%8F%8A%E4%BB%93%E5%BA%93-54-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="54 涉及仓库" />
+  <img src="https://img.shields.io/badge/%E6%B6%89%E5%8F%8A%E4%BB%93%E5%BA%93-55-8250DF?style=for-the-badge&logo=box&logoColor=white" alt="55 涉及仓库" />
 </p>
 <!-- activity:end -->
 
