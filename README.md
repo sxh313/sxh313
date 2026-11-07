@@ -16,8 +16,6 @@
 </p>
 
 <p>
-  <a href="#-精选项目"><b>精选项目</b></a>
-  ·
   <a href="#-开源贡献"><b>开源贡献</b></a>
   ·
   <a href="https://sxh313.github.io/engineering-map/ai/"><b>学习地图</b></a>
@@ -30,34 +28,6 @@
 </p>
 
 </div>
-
-## 🚀 精选项目
-
-以下项目按 GitHub Pin 顺序展示。它们分别从个人助理、业务 Agent、知识管理和研究工作台四个场景，验证 Agent 能力如何进入真实产品。
-
-### [LingDot](https://github.com/sxh313/LingDot)
-
-自托管的个人 AI 助手与 Agent 团队，基于 Pi Runtime 构建。
-
-`TypeScript` · `Agent Runtime` · `Self-hosted` · `Multi-Agent`
-
-### [AgentOS](https://github.com/sxh313/AgentOS)
-
-面向 CRM 场景的企业级 AgentOS 实践，基于 Pi Agent Core 构建。
-
-`TypeScript` · `Agent Core` · `CRM` · `Business Workflow`
-
-### [knowledge-base](https://github.com/sxh313/knowledge-base)
-
-知屿 ZhiYu：本地优先的 AI 学习笔记与知识管理应用，支持 Web / PWA、Windows 与 Android。
-
-`TypeScript` · `Local-first` · `Knowledge Management` · `Cross-platform`
-
-### [lodestar](https://github.com/sxh313/lodestar)
-
-本地优先的 AI 原生投资研究工作台，探索研究资料、分析过程与 Agent 协作的统一工作流。
-
-`TypeScript` · `AI-native` · `Research Workspace` · `Local-first`
 
 ## 🌍 开源贡献
 
